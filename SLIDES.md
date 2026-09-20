@@ -580,14 +580,14 @@ The other times, the wall comes to the slides.
 
 ## <small>Live demo 1 of 2</small> The tool call, caught in the act
 
-> "What scripts does this project define?"
+> "Create a file TODO.md with three sample items as a checkbox list, then verify it exists."
 
-Watch the wall, point at each card as it lands:
+Three turns. Point at each card as it lands:
 
-USER → INSTRUCTIONS → REQUEST SENT → RESPONSE →
-🔍 TOOL CALL → polaroid → REQUEST SENT → ASSISTANT
+USER → INSTRUCTIONS → REQUEST SENT (2) → RESPONSE → 👮 → ✍️ `write_file` + polaroid →
+REQUEST SENT (4) → RESPONSE → 🔍 `file_exists` "yes" → REQUEST SENT (6) → ASSISTANT → 🗄️
 
-**Click** REQUEST SENT: `messages`, `tools`, `model`. **Click** RESPONSE: `tool_calls[]`, `finish_reason`.
+**Click** the first RESPONSE: `tool_calls[0]` is `write_file`, `content` is null. It **asked**. **Open** the evidence locker: the harness wrote it.
 
 <span class="sticky say">"the model never touched the disk"</span>
 

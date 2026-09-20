@@ -21,8 +21,9 @@ pnpm dev                        # harness on :3737, wall on :5173
   a card is readable from the back row (110 to 125 % usually).
 - Open `SLIDES.html` in a second window. Fragments and transitions only work
   in the HTML deck.
-- Run live demo 1 once for real before the talk, so you know the key works.
-  Then press **new session** so the wall is empty.
+- Run live demo 1 once for real before the talk, so you know the key works
+  and the wall layout is what you expect. Then press **new session** so the
+  wall is empty and `tmp/` is wiped.
 - Have the Q&A ammunition from `TALK.md` in your head: caching, the leak
   numbers, the opencode line.
 - Fallback for every demo: `http://localhost:5173/?demo=1` replays
@@ -34,36 +35,52 @@ pnpm dev                        # harness on :3737, wall on :5173
 
 ## Live demo 1 · The tool call, caught in the act
 
-**Slide:** "Live demo 1 of 2 · The tool call, caught in the act" (end of Case 003).
+**Slide:** "Live demo 1 of 2 · The tool call, caught in the act" (end of Case 003,
+right after "The model cannot write the file. It can only ask.").
 
 **Setup:** empty wall, defaults in `.env`.
 
-**Prompt:**
+**Prompt** (paste it, do not improvise; verified 20 Sep 2026, three clean
+turns every time):
 
-> What scripts does this project define?
+> Create a file TODO.md with three sample items as a checkbox list, then verify it exists.
 
-**Cards, in order:**
+Why this one: the slide before says the model cannot write a file. This
+prompt makes it *ask* for a write, shows the harness doing it, and ends with
+a real file in the evidence locker. Read-only prompts ("what scripts are
+defined") work too but land flat after that slide.
+
+**Cards, in order** (about 30 seconds of wall time):
 
 1. **USER** card. "That is the only thing a human typed."
-2. **INSTRUCTIONS** card. Click it: the assembled system prompt. SYSTEM
-   constant, any `AGENTS.md` / `CLAUDE.md` from the workspace root, tool
-   names. "Every turn re-sends this entire string."
-3. **REQUEST SENT**. Click it. Point at `model`, `messages` (two entries),
-   `tools` (the menu, eight items). "We just `fetch`'d this. No SDK."
-4. **RESPONSE**. Click it. `finish_reason: "tool_calls"`, `tool_calls[0]`
-   is `read_file` with `package.json`. "It did not read the file. It asked."
-5. 🔍 **TOOL CALL** stamp and the **polaroid** with the file bytes. "The
-   harness ran `fs.readFile`. The model is still waiting."
-6. **REQUEST SENT** (turn 2). Click it. `messageCount` went from 2 to 4.
-   "Same endpoint. The array got two entries: the ask and the answer."
-7. **RESPONSE** with `finish_reason: "stop"`, then the **ASSISTANT** card
-   with the answer in the chat pane.
+2. **INSTRUCTIONS** card. Click it: the assembled system prompt, ~1,600
+   chars. SYSTEM constant, any `AGENTS.md` / `CLAUDE.md` from the workspace
+   root, the tool names. "Every turn re-sends this entire string."
+3. **REQUEST SENT** (turn 1). Click it. `model`, `messages` (2 entries),
+   `tools` (8 items, the menu). "We just `fetch`'d this. No SDK."
+4. **RESPONSE**. Click it. `finish_reason: "tool_calls"`, `content: null`,
+   `tool_calls[0].function.name = "write_file"` with the TODO content in
+   `arguments` as a JSON string. "It did not write anything. It asked. In
+   JSON."
+5. 👮 **PERMISSION** stamp ("auto-approved"), then ✍️ **TOOL CALL** stamp and
+   the **polaroid** with the bytes written. "The harness ran `fs.writeFile`.
+   The model is still waiting for the reply."
+6. **REQUEST SENT** (turn 2). Click it: `messageCount` 2 → 4. The array grew
+   by the ask and the answer. Point at the IN counter on the token ticker: it
+   went up, because the whole array went again.
+7. **RESPONSE**: `tool_calls[0]` is `file_exists`. 🔍 **TOOL CALL** and a
+   polaroid saying `yes 59`. "It is checking its own work. Also just a tool."
+8. **REQUEST SENT** (turn 3), `messageCount` 6. **RESPONSE** with
+   `finish_reason: "stop"`. **ASSISTANT** card: "The file TODO.md has been
+   created… and it exists on disk."
+9. 🗄️ `TODO.md` shows up in the **evidence locker**. Open it.
 
-**Say:** "The model never touched the disk."
+**Say:** "The model never touched the disk. It sent three JSON documents. The
+harness did everything else."
 
-**If it fails:** the model sometimes answers from the INSTRUCTIONS card
-without a tool call (it has seen `package.json` mentioned). Ask instead:
-*"Read package.json and list the scripts."*
+**If it fails:** the model occasionally skips the verification and stops
+after the write. No harm; you lose one turn. If it refuses or rambles, press
+**new session** and paste again; gpt-4o-mini is consistent on this prompt.
 
 **Time:** 2 to 3 minutes. This is the one demo that must land.
 

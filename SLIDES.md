@@ -1171,19 +1171,19 @@ Not in the model. Not in the loop.
   .sticky { margin-top: 10px; font-size: 1.15em; }
 </style>
 
-## Job titles we have survived
+## The hype titles we have been through
 
-| | title | what the job actually was |
+| | title | what it meant for a developer |
 |---|---|---|
-| 2023 | **Prompt** engineer | Wording one request well. One call, one answer, no tools. |
-| 2023 | **RAG** engineer | Search first, paste the hits into the prompt. `grep` with vectors. |
-| 2024 | **Agent** engineer | Let the model call tools and keep going until it says done. |
-| 2024 | **Graph** engineer | Draw that loop as a state machine: nodes, edges, every branch explicit. |
-| 2025 | **Context** engineer | Curate what goes into each call: keep, compact, drop, inject. |
-| 2025 | **Loop** engineer | Throw the boxes away. Plain loop, model picks the path, you own the loop. |
-| 2026 | **Harness** engineer | Everything around the loop: tools, permissions, compaction, sandbox, UX. |
+| 2023 | **Prompt** engineer | Getting a chatbot to answer well by wording the question. One call, one answer. |
+| 2023 | **RAG** engineer | A chat that can look things up. Search your docs, paste the hits into the prompt. |
+| 2024 | **Agent** engineer | Give the model tools and let it act, not just answer. The `while` loop is born. |
+| 2024 | **Graph** engineer | Draw the agent as a flowchart. Nodes, edges, explicit branches, a box per step. |
+| 2025 | **Context** engineer | Manage what the model sees each turn. Keep, compact, drop, inject. |
+| 2025 | **Loop** engineer | A loop around the agent's loop. Run it again and again until the tests pass. |
+| 2026 | **Harness** engineer | Everything around the loop. Tools, permissions, compaction, sandbox, UX. |
 
-<span class="sticky">same `while`, better company. I hope you are one of these.</span>
+<span class="sticky">same `while`, new business card. I hope you are one of these.</span>
 
 ---
 

@@ -317,12 +317,12 @@ not your bottleneck. The harness is."*
 
 Then two comic beats before closing arguments:
 
-- **"Job titles we have survived."** Prompt → RAG → agent → graph →
-  context → loop → harness engineer, one row per year, third column
-  says in a sentence what the job actually was (graph = the loop drawn
-  as an explicit state machine, loop = throwing the boxes away and
-  letting the model pick the path). Sticky: same `while`, better
-  company, I hope you are one of these.
+- **"The hype titles we have been through."** Prompt → RAG → agent →
+  graph → context → loop → harness engineer, one row per year, third
+  column says in a sentence what it meant for a developer (RAG = a chat
+  that can look up your docs, graph = the agent drawn as a flowchart,
+  loop = a loop around the agent's loop, run it until the tests pass).
+  Sticky: same `while`, new business card, I hope you are one of these.
 - **"Exhibit V: and, I hope, none of you are this one."** A WANTED
   poster for The Vibe Programmer on a chaotic evidence board: five
   editors still open (Cursor → Lovable → Claude Code Max → Codex Pro →

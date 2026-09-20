@@ -440,7 +440,11 @@ export default function Wall(props: Props) {
           initialPositionX={size.w / 2 - 100}
           initialPositionY={80}
           limitToBounds={false}
-          wheel={{ step: 0.08 }}
+          // Trackpad pinch arrives as a ctrlKey wheel event and uses
+          // smoothStep (library default 0.001 feels glacial on stage).
+          // Two-finger scroll-zoom uses step; real touch pinch uses pinch.step.
+          wheel={{ step: 0.12, smoothStep: 0.004 }}
+          pinch={{ step: 12 }}
           doubleClick={{ disabled: true }}
           panning={{ velocityDisabled: true }}
         >

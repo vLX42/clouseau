@@ -582,7 +582,7 @@ The other times, the wall comes to the slides.
 
 > "Create a file TODO.md with three sample items as a checkbox list, then verify it exists."
 
-Three turns. Point at each card as it lands:
+Press **🎬 demo 1**, it types this for you. Three turns. Point at each card as it lands:
 
 USER → INSTRUCTIONS → REQUEST SENT (2) → RESPONSE → 👮 → ✍️ `write_file` + polaroid →
 REQUEST SENT (4) → RESPONSE → 🔍 `file_exists` "yes" → REQUEST SENT (6) → ASSISTANT → 🗄️
@@ -1053,7 +1053,7 @@ The skill is a bad influence. The model will obey it.
 
 ## <small>Live demo 2 of 2</small> The emoji police make an arrest
 
-Press the **🎬 hate-list demo** button. Watch it type (typo included):
+Press the tiny **🎬 demo 2** button. Watch it type (typo included):
 
 > "write me a todo list of chores i hate, it need to have taxes, cleaning the oven and the gym showers. save it as HateList.tsx and use the emoji skill, really let the anger show"
 

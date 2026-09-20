@@ -49,16 +49,39 @@ export function eventsToChat(events: AgentEvent[]): ChatMsg[] {
   return out;
 }
 
-// Auto-typed demo prompt for the emoji-police bit. The prompt itself is
-// innocent — the banned emojis come from the SKILL's rant-list section, so
-// the demo shows: skill instructs, model obeys, harness confiscates.
-// Typed with a deliberate "emjoi" typo that gets noticed, backspaced, and
+// Auto-typed prompts for the two live demos in the talk (see demo.md), so
+// the presenter presses one tiny button instead of typing on stage. Each
+// script is typed with a deliberate typo that gets noticed, backspaced and
 // corrected, so it looks human.
-const DEMO_TYPO_TAIL = "emjoi";
-const DEMO_BEFORE =
-  "write me a todo list of chores i hate, it need to have taxes, cleaning the oven and the gym showers. save it as HateList.tsx and use the " +
-  DEMO_TYPO_TAIL;
-const DEMO_AFTER = " skill, really let the anger show";
+//   before: text typed up to and including the typo
+//   typo:   the wrong tail of `before` that gets backspaced
+//   fix:    what gets typed instead
+//   after:  the rest of the prompt
+type DemoScript = { label: string; title: string; before: string; typo: string; fix: string; after: string };
+const DEMO_SCRIPTS: DemoScript[] = [
+  {
+    // Live demo 1: the model asks for a write, the harness does it, the file
+    // lands in the evidence locker.
+    label: "demo 1",
+    title: "auto-type the live demo 1 prompt (write TODO.md, verify it)",
+    before: "Create a file TODO.md with three sample items as a checbox",
+    typo: "checbox",
+    fix: "checkbox",
+    after: " list, then verify it exists.",
+  },
+  {
+    // Live demo 2: the emoji police. The prompt itself is innocent; the
+    // banned emojis come from the SKILL's rant-list section, so the demo
+    // shows: skill instructs, model obeys, harness confiscates.
+    label: "demo 2",
+    title: "auto-type the live demo 2 prompt (emoji police)",
+    before:
+      "write me a todo list of chores i hate, it need to have taxes, cleaning the oven and the gym showers. save it as HateList.tsx and use the emjoi",
+    typo: "emjoi",
+    fix: "emoji",
+    after: " skill, really let the anger show",
+  },
+];
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -87,7 +110,7 @@ export default function Chat({
 
   const typingRef = useRef(false);
 
-  const autoType = async () => {
+  const autoType = async (script: DemoScript) => {
     const el = inputRef.current;
     if (!el || running || typingRef.current) return;
     typingRef.current = true;
@@ -100,15 +123,15 @@ export default function Chat({
         await sleep(18 + Math.random() * 55);
       }
     };
-    await typeChars(DEMO_BEFORE);
+    await typeChars(script.before);
     await sleep(650); // …notices the typo
-    for (let i = 0; i < DEMO_TYPO_TAIL.length; i++) {
+    for (let i = 0; i < script.typo.length; i++) {
       el.value = el.value.slice(0, -1);
       await sleep(70 + Math.random() * 40);
     }
     await sleep(180);
-    await typeChars("emoji");
-    await typeChars(DEMO_AFTER);
+    await typeChars(script.fix);
+    await typeChars(script.after);
     await sleep(450);
     typingRef.current = false;
     submit();
@@ -298,23 +321,29 @@ export default function Chat({
               }}
             >
               <span style={{ opacity: 0.55 }}>enter to send · shift+enter for newline</span>
-              <button
-                onClick={autoType}
-                disabled={running}
-                title="auto-type the emoji-police demo prompt"
-                style={{
-                  background: "transparent",
-                  border: "1px solid var(--accent)",
-                  color: "var(--accent)",
-                  fontSize: 9,
-                  letterSpacing: 1.2,
-                  padding: "2px 6px",
-                  opacity: running ? 0.35 : 1,
-                  cursor: running ? "default" : "pointer",
-                }}
-              >
-                🎬 hate-list demo
-              </button>
+              <span style={{ display: "flex", gap: 4 }}>
+                {DEMO_SCRIPTS.map((d) => (
+                  <button
+                    key={d.label}
+                    onClick={() => autoType(d)}
+                    disabled={running}
+                    title={d.title}
+                    style={{
+                      background: "transparent",
+                      border: "1px solid var(--accent)",
+                      color: "var(--accent)",
+                      fontSize: 9,
+                      letterSpacing: 1.2,
+                      padding: "2px 6px",
+                      opacity: running ? 0.35 : 1,
+                      cursor: running ? "default" : "pointer",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    🎬 {d.label}
+                  </button>
+                ))}
+              </span>
             </div>
           </>
         )}

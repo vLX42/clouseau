@@ -17,8 +17,9 @@ pnpm dev                        # harness on :3737, wall on :5173
 
 - `.env` for the talk: `MODEL=gpt-4o-mini`, `COMPACTION_THRESHOLD=8000`,
   `REQUIRE_PERMISSION=false`, `MAX_TURNS=12`.
-- Open `http://localhost:5173` in a Chromium browser, full screen, zoom so
-  a card is readable from the back row (110 to 125 % usually).
+- Open `http://localhost:5173` in a Chromium browser, full screen. Pinch on
+  the trackpad zooms the wall (tuned to be quick), drag to pan, "follow on"
+  keeps the newest card in view.
 - Open `SLIDES.html` in a second window. Fragments and transitions only work
   in the HTML deck.
 - Run live demo 1 once for real before the talk, so you know the key works
@@ -40,8 +41,9 @@ right after "The model cannot write the file. It can only ask.").
 
 **Setup:** empty wall, defaults in `.env`.
 
-**Prompt** (paste it, do not improvise; verified 20 Sep 2026, three clean
-turns every time):
+**Prompt:** press the tiny **🎬 demo 1** button under the chat box. It types
+this for you (with a "checbox" typo it corrects, so it looks human) and
+submits it. Verified 20 Sep 2026 through the real UI, three clean turns:
 
 > Create a file TODO.md with three sample items as a checkbox list, then verify it exists.
 
@@ -140,9 +142,8 @@ for real.
 
 **Setup:** defaults. New session.
 
-**Prompt:** do not type it. Press the **🎬 hate-list demo** button under the
-chat box. It types the prompt for you, typo and backspace included, so it
-looks human:
+**Prompt:** press the tiny **🎬 demo 2** button under the chat box. It types
+the prompt for you, typo and backspace included, so it looks human:
 
 > write me a todo list of chores i hate, it need to have taxes, cleaning the
 > oven and the gym showers. save it as HateList.tsx and use the emoji skill,

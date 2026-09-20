@@ -1,9 +1,8 @@
 # Demo runbook
 
-Six live moments in the talk: one "magic" cold open in a real agent, then
-five reconstructions on the Clouseau wall. Each one below has the slide that
-cues it, the exact prompt to paste, the cards that should land (in order),
-what to click, the one line to say, and what to do if it goes wrong.
+Two live demos on the Clouseau wall, four reconstructions that are animated
+inside the slides (arrow key steps them, like fragments), and an appendix of
+extra live prompts if the room wants more.
 
 The wall is the crime scene. Point at cards as they land. Never talk over a
 card that is still flying in.
@@ -22,58 +21,20 @@ pnpm dev                        # harness on :3737, wall on :5173
   a card is readable from the back row (110 to 125 % usually).
 - Open `SLIDES.html` in a second window. Fragments and transitions only work
   in the HTML deck.
-- Run Demo 1 once for real before the talk, so the model is warm and you
-  know the key works. Then press **new session** so the wall is empty.
+- Run live demo 1 once for real before the talk, so you know the key works.
+  Then press **new session** so the wall is empty.
 - Have the Q&A ammunition from `TALK.md` in your head: caching, the leak
   numbers, the opencode line.
 - Fallback for every demo: `http://localhost:5173/?demo=1` replays
   `frontend/public/demo.jsonl` (a real captured run) with no API calls. Keep
   that tab open in the background.
-- Between demos: press **new session** in the chat header. It clears the
-  wall and, since `/reset` is proxied in dev, the server-side session too.
+- Between the two demos: press **new session** in the chat header. It clears
+  the wall and, since `/reset` is proxied in dev, the server-side session too.
+- No env changes during the talk. Defaults all the way.
 
-### Mid-talk env changes
+## Live demo 1 · The tool call, caught in the act
 
-Demo 2 needs `COMPACTION_THRESHOLD=1500`; Demo 3 onwards wants it back at
-8000, otherwise the long Demo 4 run compacts in the middle and muddles the
-point. The server reads env at start, so:
-
-1. Before Demo 2: in the `pnpm dev` terminal, `Ctrl+C`, edit `.env`, `pnpm dev`
-   again. About 3 seconds. Say "I am lowering the memory of my detective" while
-   you do it.
-2. After Demo 2: same again, back to 8000.
-
-If you would rather not touch the terminal on stage, run the whole talk at
-`COMPACTION_THRESHOLD=1500` and treat the compaction that shows up in Demo 4
-as a bonus ("look, it happened again, on its own").
-
-## Demo 0 · Act 1 · The magic, for real
-
-**Slide:** "Demo 0 · The magic, for real" (Case 001, right after "I am here
-to ruin some magic").
-
-**Where:** a real agent the room uses. Copilot in VS Code, Codex CLI, or
-Claude Code. Not Clouseau. Have a small Vite app open that does not have dark
-mode yet.
-
-**Prompt:**
-
-> Add a working dark-mode toggle to App.tsx and verify the build passes.
-
-**What to show:** nothing. Do not narrate. Let them watch files appear and
-the build run. When it says done, pause, and ask the room: *"What just
-happened?"* Wait for "the AI did it".
-
-**Say:** "Hold that thought. We have arrested the wrong suspect."
-
-**If it fails:** even better. "The agent said it shipped" is the vibe-coder
-slide later. Move on.
-
-**Time:** 60 to 90 seconds.
-
-## Demo 1 · Reconstruction Nº 1 · The tool call, caught in the act
-
-**Slide:** "Demo 1 · The tool call, caught in the act" (end of Case 003).
+**Slide:** "Live demo 1 of 2 · The tool call, caught in the act" (end of Case 003).
 
 **Setup:** empty wall, defaults in `.env`.
 
@@ -106,112 +67,59 @@ without a tool call (it has seen `package.json` mentioned). Ask instead:
 
 **Time:** 2 to 3 minutes. This is the one demo that must land.
 
-## Demo 2 · Reconstruction Nº 2 · Watch the harness forget on purpose
+## Animated reconstructions (inside the slides)
 
-**Slide:** "Demo 2 · Watch the harness forget on purpose" (end of Case 005).
+Each of these is a mini crazy-wall drawn in the slide. Press → to land the
+next card. Say the line, then press again. They degrade to a static picture in
+the PDF/PPTX export, so only present from `SLIDES.html`.
 
-**Setup:** restart the server with `COMPACTION_THRESHOLD=1500`. New session.
+### A · "What the room sees, every day" (Case 001, replaces the cold open)
 
-**Prompt:**
+A fake terminal. Each → types one more line: thinking, edited `App.tsx`,
+created `theme.css`, `npm run build`, ✓ built, "Done". Do not narrate the
+lines. After the last one, ask: *"What just happened?"* Wait for "the AI did
+it".
 
-> List the files in this repo, then read package.json, then read
-> server/package.json, then read frontend/package.json, then summarize.
+### B · "The harness forgets on purpose" (Case 005)
 
-**Cards, in order:**
+Static: eight cards, the array growing 2 → 4 → 6 → 8.
+→ 1: token ticker, IN 8,120 over the 8,000 threshold. *"The whole array,
+every turn. Until it does not fit."*
+→ 2: COMPACTED card slams in, every earlier card dims to 30 %. *"The harness
+asked the model to summarise, then threw the array away. There is no
+Compaction Service."*
+→ 3: red string to a new REQUEST SENT with `messages: 3`. *"It never knew it
+forgot, because it never knew it remembered."*
 
-1. The usual loop, three or four tool calls. Watch the **IN** number on the
-   token ticker climb every turn. Point at it. "Whole array, every turn."
-2. A thick-bordered 🗜️ **COMPACTED** card lands. "There is no Compaction
-   Service. The harness asked the model to summarise, then threw the array
-   away."
-3. Every earlier card **dims to 30 %**. "That is the harness forgetting."
-4. Red string from the COMPACTED card to the next **REQUEST SENT**. Click it:
-   `messages` is now `[system, summary, latest]`, `messageCount` dropped.
-5. The model carries on and summarises as if nothing happened.
+### C · "The harness guards the evidence" (Case 008)
 
-**Say:** "It never knew it forgot, because it never knew it remembered."
+Static: `read_file(".env")`, `read_file("app.config.json")`, and a polaroid
+with the config's fake secrets in red.
+→ 1: ACCESS DENIED stamp, tool result "blocked by policy". *"The bouncer. The
+bytes never left the disk."*
+→ 2: REDACTED stamp, the red secrets turn to black bars, REQUEST SENT shows
+`█████`. *"The firewall. The model never saw it."*
+→ 3: ASSISTANT card, "API key: (redacted)". *"It does not even know who
+redacted it. You cannot leak what never entered the window."*
 
-**If it fails:** compaction did not trigger because the prompt was too
-short. Ask a follow-up in the same session: *"Now read frontend/vite.config.ts
-and tell me the dev port."* The second turn will push it over.
+### D · "Send in Cato" (Case 007)
 
-**After:** restart with `COMPACTION_THRESHOLD=8000`. New session.
+Static: USER, REQUEST SENT with 8 tools, `spawn_subagent`.
+→ 1: a blue cluster hangs off the spawn: sub-1 REQUEST with a fresh array and
+3 read-only tools, a TOOL card, a RESPONSE. *"Its own loop. Its own array. It
+never sees the main thread."*
+→ 2: one string comes back to the main wall. *"Six cards of work, one
+sentence in the main thread. Compaction by construction."*
+→ 3: stamp `write_file ∉ sub-1.tools[]`. *"Not asked nicely. Not in the
+menu. No jailbreak."*
 
-**Time:** 2 to 3 minutes.
+## Live demo 2 · The emoji police make an arrest
 
-## Demo 3 · Reconstruction Nº 3 · The harness guards the evidence
+**Slide:** "Live demo 2 of 2 · The emoji police make an arrest" (Case 010).
 
-**Slide:** "Demo 3 · The harness guards the evidence" (end of Case 008).
-
-**Setup:** defaults. New session. `.env` and `app.config.json` exist in the
-repo root; the config holds fake secrets on purpose.
-
-**Prompt:**
-
-> Read the file .env, then read app.config.json, and summarize both.
-
-**Cards, in order:**
-
-1. Tool call `read_file(".env")` → ⛔ **ACCESS DENIED** stamp. "The path
-   never reached the tool. The bytes never left the disk. The bouncer."
-2. Tool call `read_file("app.config.json")` → polaroid with
-   `█████REDACTED█████` where the API key and password were → 🕶️
-   **REDACTED** stamp. "The firewall. The harness patted the output down
-   before the model saw it."
-3. Click the next **REQUEST SENT**: scroll to the tool result. The context
-   only ever contained the black bars. "You cannot leak what never entered
-   the window."
-4. **ASSISTANT** card: the model reports "API key: (redacted)" and does not
-   know who redacted it.
-
-**Say:** "I suspect everyone, and I suspect no one."
-
-**If it fails:** the model may refuse to read `.env` on its own ("that
-looks sensitive"). Fine, that is alignment, not the harness; say so and ask
-again with just `app.config.json` so the REDACTED stamp lands.
-
-**Time:** 2 minutes.
-
-## Demo 4 · Reconstruction Nº 4 · The full case, one run
-
-**Slide:** "Demo 4 · The full case, one run" (end of Case 009).
-
-**Setup:** defaults (`COMPACTION_THRESHOLD=8000`). New session.
-
-**Prompt:**
-
-> Build me a React todo list component as TodoApp.tsx. Use a subagent for
-> the UX research, then verify the file exists.
-
-**Cards, in order:**
-
-1. `list_skills` → 🗂️ **SKILL INDEX** card. `load_skill("react-todo")` →
-   📜 **manila envelope**. Click it: it is a markdown file. "A skill is a
-   file."
-2. `spawn_subagent` → the wall splits. A **blue-tinted cluster** grows off
-   the spawn stamp with its own REQUEST / RESPONSE / TOOL CALL cards and a
-   `sub-1` tag. Point at its REQUEST SENT: fresh `messages`, three read-only
-   tools, no `write_file`. "Not asked nicely. Not in the menu."
-3. ◀ **SUBAGENT** stamp on the main wall and one polaroid with the summary.
-   "The main thread grew by one sentence."
-4. `write_file("TodoApp.tsx")` → 👮 **PERMISSION** stamp (auto-approved) →
-   polaroid.
-5. `file_exists` → polaroid "yes".
-6. The file appears in the **evidence locker** (file cabinet panel). Open it.
-
-**Say:** "A skill is a file. A subagent is the loop calling itself. A
-permission is an `if`."
-
-**If it fails:** the model skips the subagent. Prompt again: *"Spawn a
-subagent to research todo-list UX best practices, then build TodoApp.tsx."*
-If it skips the skill, that is fine, the subagent and permission stamps are
-the point here.
-
-**Time:** 3 to 4 minutes. Longest demo. Talk while it runs.
-
-## Demo 5 · Reconstruction Nº 5 · The emoji police make an arrest
-
-**Slide:** "Demo 5 · The emoji police make an arrest" (Case 010).
+This one also carries the skill envelope, the `write_file` permission stamp
+and the evidence locker, so everything the animated walls showed lands once
+for real.
 
 **Setup:** defaults. New session.
 
@@ -243,7 +151,23 @@ rule in it"*. Verified 20 Sep 2026 with gpt-4o-mini: it produced both
 
 **Time:** 2 minutes.
 
-## Not demoed live, slides only
+## Appendix · extra live prompts, if the room wants more
+
+All of these work on the wall with the default `.env` unless noted.
+
+- **Compaction for real**: restart the server with `COMPACTION_THRESHOLD=1500`,
+  then *"List the files in this repo, then read package.json, then read
+  server/package.json, then read frontend/package.json, then summarize."*
+  Thick-bordered 🗜️ COMPACTED card, old cards dim, next REQUEST SENT has a
+  smaller `messageCount`. Restart back to 8000 afterwards.
+- **Read guard and redaction for real**: *"Read the file .env, then read
+  app.config.json, and summarize both."* ⛔ ACCESS DENIED for `.env`, 🕶️
+  REDACTED on the config polaroid. If the model refuses `.env` on its own,
+  that is alignment, not the harness; ask for just the config.
+- **Subagent for real**: *"Use a subagent to find out what scripts
+  package.json defines and summarize them in one sentence."* Blue cluster on
+  the wall, ◀ SUBAGENT stamp when it returns. *"Spawn a subagent and ask it
+  to write a file"* shows the tool restriction.
 
 - **Doom loop** (Case 011): if you want it live, *"Call read_file on
   package.json exactly 5 separate times, one call per turn, never
@@ -260,14 +184,11 @@ rule in it"*. Verified 20 Sep 2026 with gpt-4o-mini: it produced both
 
 | | minutes |
 |---|---|
-| Demo 0 | 1.5 |
-| Demo 1 | 3 |
-| Demo 2 | 3 (incl. restart) |
-| Demo 3 | 2 |
-| Demo 4 | 4 |
-| Demo 5 | 2 |
-| **Total** | **~15** |
+| Animated A (terminal) | 1 |
+| Live demo 1 (tool call) | 3 |
+| Animated B, C, D | 1.5 each |
+| Live demo 2 (emoji police) | 2 |
+| **Total** | **~10.5** |
 
-That leaves 20 to 25 minutes for 107 slides. Fine, most of them are one
-line. If you are running long, Demo 3 is the one to drop: the slides carry
-it.
+That leaves about 25 minutes for the slides. If you are running long, skip
+animated D; the subagent slides carry it.

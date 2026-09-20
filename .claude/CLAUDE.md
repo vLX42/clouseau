@@ -37,9 +37,9 @@ Keep the root free of `CLAUDE.md`/`AGENTS.md` unless it is a tiny, deliberate
 
 | Path | What it is |
 |---|---|
-| `demo.md` | Runbook for the six live demos (prompt, cards in order, clicks, say-line, fallback, env restarts). Keep in sync with the `_class: demo` cue slides in `SLIDES.md`. |
+| `demo.md` | Runbook for the two live demos and the four animated reconstructions (`_class: anim` slides, fragments step the animation). Keep in sync with the `_class: demo` / `_class: anim` slides in `SLIDES.md`. |
 | `TALK.md` | Talk outline, act structure, vocabulary table, the 11 live-demo prompts, analogies, what to skip. The source of truth for content. |
-| `SLIDES.md` | Marp deck (~90 slides), sepia case-file styling, 5 "Reconstruction" break-outs where you leave the slides and run the live app. `SLIDES.html` / `SLIDES.pptx` are renders of it, regenerate rather than edit. |
+| `SLIDES.md` | Marp deck (~90 slides), sepia case-file styling, 2 live break-outs to the app plus 4 animated mini-wall reconstructions inside the deck (`_class: anim`, stepped by fragments). `SLIDES.html` / `SLIDES.pptx` are renders of it, regenerate rather than edit. |
 | `slides-assets/` | Generated illustrations used as slide backgrounds (dog-bite, beumb, doom-loop, skill-cabinet, ...). |
 | `server/` | The **harness**: `agent.ts` (~660 lines) is the `while` loop, `tools.ts` the tool schemas + executors + guards, `compaction.ts` the summarise-and-replace step, `index.ts` a Hono server streaming events over SSE on `POST /run`. Talks to OpenAI chat completions with raw `fetch`, no SDK, on purpose. |
 | `frontend/` | The **crazy wall** visualiser (React + Vite). Every harness event becomes a card, stamp, polaroid, sticky note or manila envelope pinned to a wall with wires between them. `TokenTicker` shows live IN/OUT token totals with comic hurt-word bursts. `GridView`, `Minimap`, `FileCabinet`, `Chat` are the side panels. |

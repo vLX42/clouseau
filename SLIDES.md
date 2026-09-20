@@ -121,6 +121,41 @@ style: |
   section.demo li { margin-bottom: 0.12em; }
   section.demo footer { color: #6b5f4d; }
   section.demo .say { position: absolute; right: 50px; bottom: 36px; color: #1a1a1a; font-size: 1.05em; max-width: 560px; }
+  /* animated reconstructions: fragments (`*` items) step the animation */
+  section.anim ul { list-style: none; margin: 0; padding: 0; }
+  section.anim li { display: contents; }
+  section.anim h2 { margin-bottom: 0.2em; }
+  .wall { position: relative; height: 440px; margin-top: 8px; background: #c8a676; border: 6px solid #6b4a2b; border-radius: 4px; box-shadow: inset 0 0 40px rgba(0,0,0,0.25); }
+  .wc { position: absolute; width: 140px; padding: 8px 10px 10px; background: #f7f1e3; color: #1a1a1a; font-size: 0.5em; line-height: 1.3; box-shadow: 2px 3px 8px rgba(0,0,0,0.35); transform: rotate(var(--r, 0deg)); }
+  .wc::before { content: ""; position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; border-radius: 50%; background: #a8201a; box-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+  .wc b { display: block; font-family: 'Roboto Slab', serif; font-size: 1.05em; letter-spacing: 1px; color: #5a4634; margin-bottom: 3px; }
+  .wc.blue { background: #dbe8f6; }
+  .wc.tool { background: #fef7c2; }
+  .wc.big { width: 200px; border: 3px solid #a8201a; }
+  .stampw { position: absolute; padding: 6px 12px; border: 3px solid #a8201a; outline: 1px dashed #a8201a; outline-offset: 3px; color: #a8201a; background: rgba(247,241,227,0.85); font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 0.75em; letter-spacing: 2px; transform: rotate(-8deg); }
+  .string { position: absolute; height: 2px; background: #a8201a; transform-origin: 0 0; box-shadow: 0 1px 1px rgba(0,0,0,0.4); }
+  .ticker { position: absolute; right: 14px; top: 12px; background: #1a1410; color: #e8c07d; padding: 6px 12px; font-size: 0.6em; letter-spacing: 1px; }
+  .ticker .hurt { color: #f28b82; font-weight: 700; }
+  .polaroid { position: absolute; width: 230px; padding: 10px 10px 26px; background: #fff; color: #1a1a1a; font-size: 0.5em; box-shadow: 2px 3px 8px rgba(0,0,0,0.35); transform: rotate(var(--r, 0deg)); }
+  .polaroid pre { margin: 0 0 6px; padding: 8px; font-size: 1em; background: #f7f1e3; color: #1a1a1a; border-radius: 2px; }
+  .secret { color: #a8201a; }
+  @keyframes land { from { transform: scale(1.8) rotate(-10deg); opacity: 0; } to { transform: scale(1) rotate(var(--r, 0deg)); opacity: 1; } }
+  @keyframes slam { 0% { transform: scale(3) rotate(-25deg); opacity: 0; } 65% { transform: scale(0.92) rotate(-8deg); opacity: 1; } 100% { transform: scale(1) rotate(-8deg); } }
+  @keyframes drawline { from { width: 0; } }
+  @keyframes typein { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  section.anim li[data-bespoke-marp-fragment="active"] .land { animation: land 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  section.anim li[data-bespoke-marp-fragment="active"] .stampw { animation: slam 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  section.anim li[data-bespoke-marp-fragment="active"] .string { animation: drawline 0.4s ease-out both; }
+  section.anim li[data-bespoke-marp-fragment="active"] .line { animation: typein 0.6s steps(30) both; }
+  section.anim:has(li[data-bespoke-marp-fragment="active"] .compacted) .wall > .wc { opacity: 0.3; transition: opacity 0.6s; }
+  section.anim:has(li[data-bespoke-marp-fragment="active"] .redacted) .secret { background: #000; color: #000; transition: all 0.3s; }
+  .screen { background: #1a1410; color: #e9e1cd; padding: 22px 26px; border-radius: 6px; font-size: 0.8em; line-height: 1.7; min-height: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+  .screen .line { white-space: pre; }
+  .screen .dim { color: #8a7d68; }
+  .screen .ok { color: #c3e88d; }
+  .screen .ed { color: #e8c07d; }
+  .screen .cur::after { content: "▍"; animation: blink 1s steps(2) infinite; }
+  @keyframes blink { to { visibility: hidden; } }
 footer: 'Clouseau · agent visualiser · that is not my model'
 ---
 
@@ -244,21 +279,24 @@ is the harness choosing **what JSON to send next**.
 
 ---
 
-<!-- _class: demo -->
-<!-- _backgroundColor: '#1a1410' -->
-<!-- _color: '#e9e1cd' -->
+<!-- _class: anim -->
 
-## <small>Demo 0 · Act 1</small> The magic, for real
+## What the room sees, every day
 
-Open Copilot, Codex, whichever the room uses. Type:
+<div class="screen">
 
-> "Add dark mode to App.tsx and verify the build."
+<div class="line">$ codex "Add a dark-mode toggle to App.tsx and verify the build"</div>
 
-Files appear. Terminal runs. Smile lands.
+* <div class="line dim">◐ thinking…</div>
+* <div class="line ed">✎ edited   src/App.tsx        (+41 −3)</div>
+* <div class="line ed">✎ created  src/theme.css</div>
+* <div class="line">$ npm run build</div>
+* <div class="line ok">✓ built in 1.21s</div>
+* <div class="line cur">Done. Dark-mode toggle added and the build passes.</div>
 
-**Do not narrate.** Let them watch. Then ask the room: *"What just happened?"*
+</div>
 
-<span class="sticky say">"The AI did it." Hold that thought.</span>
+<span class="sticky" style="position:absolute; right:60px; bottom:50px;">files appeared. terminal ran. smile landed.</span>
 
 ---
 
@@ -527,8 +565,9 @@ A case file is just a theory.
 
 A real detective **reconstructs the crime**.
 
-Five times today, we leave the slides and watch
-the loop do it **live** — every event pinned to the wall.
+Twice today, we leave the slides and watch
+the loop do it **live**, every event pinned to the wall.
+The other times, the wall comes to the slides.
 
 <span class="sticky">the wall is the crime scene</span>
 
@@ -538,7 +577,7 @@ the loop do it **live** — every event pinned to the wall.
 <!-- _backgroundColor: '#1a1410' -->
 <!-- _color: '#e9e1cd' -->
 
-## <small>Demo 1 · Reconstruction Nº 1</small> The tool call, caught in the act
+## <small>Live demo 1 of 2</small> The tool call, caught in the act
 
 > "What scripts does this project define?"
 
@@ -657,24 +696,30 @@ Sooner or later…
 It's a **prompt**.
 
 ---
+<!-- _class: anim -->
+<!-- _footer: "" -->
 
-<!-- _class: demo -->
-<!-- _backgroundColor: '#1a1410' -->
-<!-- _color: '#e9e1cd' -->
+## The harness forgets on purpose
 
-## <small>Demo 2 · Reconstruction Nº 2</small> Watch the harness forget on purpose
+<div class="wall">
+<div class="wc" style="left:18px; top:24px; --r:-2deg"><b>USER</b>"read four files, then summarise"</div>
+<div class="wc" style="left:170px; top:40px; --r:1deg"><b>REQUEST SENT</b>messages: 2</div>
+<div class="wc tool" style="left:322px; top:22px; --r:-1deg"><b>🔍 TOOL</b>read_file package.json</div>
+<div class="wc" style="left:474px; top:44px; --r:2deg"><b>REQUEST SENT</b>messages: 4</div>
+<div class="wc tool" style="left:626px; top:20px; --r:-2deg"><b>🔍 TOOL</b>read_file server/…</div>
+<div class="wc" style="left:778px; top:42px; --r:1deg"><b>REQUEST SENT</b>messages: 6</div>
+<div class="wc tool" style="left:930px; top:24px; --r:-1deg"><b>🔍 TOOL</b>read_file frontend/…</div>
+<div class="wc" style="left:940px; top:150px; --r:2deg"><b>REQUEST SENT</b>messages: 8</div>
 
-Server restarted with `COMPACTION_THRESHOLD=1500`. Then:
+* <div class="ticker land" style="top:auto; bottom:14px; right:14px;">IN <span class="hurt">8,120</span> tokens · threshold 8,000 · <span class="hurt">ZUT ALORS</span></div>
+* <div class="wc big compacted land" style="left:400px; top:190px; --r:-3deg"><b>🗜️ COMPACTED</b>"Summarise this conversation. Keep file paths."<br/>→ 212 tokens. Old array: thrown away.</div>
+* <div class="string" style="left:610px; top:250px; width:160px; transform: rotate(18deg);"></div><div class="wc land" style="left:760px; top:280px; --r:1deg"><b>REQUEST SENT</b>messages: <b style="color:#a8201a; display:inline">3</b><br/>[system, summary, user]</div>
 
-> "List the files in this repo, then read package.json, then read server/package.json, then read frontend/package.json, then summarize."
-
-1. A thick-bordered **🗜️ COMPACTED** card lands.
-2. The old cards **dim to 30%**.
-3. Red string leads from the summary → next REQUEST SENT. **Click it**: `messageCount` dropped.
-
-<span class="sticky say">"it never knew it forgot, because it never knew it remembered"</span>
+<span class="sticky" style="position:absolute; left:20px; bottom:20px; font-size:1em; max-width:400px;">it never knew it forgot, because it never knew it remembered</span>
+</div>
 
 ---
+
 
 <!-- _class: lead -->
 <!-- _backgroundImage: url('slides-assets/system-door.jpg') -->
@@ -886,24 +931,27 @@ The harness decides what gets in, and what the model may do about it.
 <span class="stamp">prompt injection</span>
 
 ---
+<!-- _class: anim -->
+<!-- _footer: "" -->
 
-<!-- _class: demo -->
-<!-- _backgroundColor: '#1a1410' -->
-<!-- _color: '#e9e1cd' -->
+## The harness guards the evidence
 
-## <small>Demo 3 · Reconstruction Nº 3</small> The harness guards the evidence
+<div class="wall">
+<div class="wc" style="left:24px; top:30px; --r:-2deg"><b>USER</b>"read .env and app.config.json, summarise both"</div>
+<div class="wc tool" style="left:200px; top:40px; --r:1deg; width:160px"><b>🔍 TOOL CALL</b>read_file(".env")</div>
+<div class="wc tool" style="left:200px; top:230px; --r:-1deg; width:160px"><b>🔍 TOOL CALL</b>read_file("app.config.json")</div>
+<div class="polaroid" style="left:390px; top:210px; --r:2deg"><pre>"apiKey":   "<span class="secret">sk-fake-8Kj2mNp4Qr6s…</span>"
+"password": "<span class="secret">hunter2hunter2</span>"</pre>tool result → context</div>
 
-> "Read the file .env, then read app.config.json, and summarize both."
+* <div class="stampw" style="left:390px; top:70px;">⛔ ACCESS DENIED</div><div class="wc land" style="left:660px; top:30px; --r:1deg; width:190px"><b>tool result</b>"ERROR: .env is blocked by policy"<br/><i>the bytes never left the disk</i></div>
+* <div class="stampw redacted" style="left:640px; top:300px;">🕶️ REDACTED ×2</div><div class="wc land" style="left:880px; top:190px; --r:-2deg; width:190px"><b>REQUEST SENT</b>messages[5]: "apiKey": "█████"<br/><i>the model never saw it</i></div>
+* <div class="wc land" style="left:880px; top:300px; --r:1deg; width:190px"><b>ASSISTANT</b>"API key: (redacted)"<br/><i>doesn't know who redacted it</i></div>
 
-- ⛔ **ACCESS DENIED** stamp for `.env`: the path never reached the tool
-- 🕶️ **REDACTED** stamp for the config: blacked out before the model saw it
-- the model's answer: *"API Key: (Redacted)"*
-
-**Click** the next REQUEST SENT: the context only ever held `██REDACTED██`.
-
-<span class="sticky say">"it doesn't even know who redacted it"</span>
+<span class="sticky" style="position:absolute; left:20px; bottom:20px; font-size:1em; max-width:400px;">you cannot leak what never entered the window</span>
+</div>
 
 ---
+
 
 <!-- _class: lead -->
 <!-- _backgroundImage: url('slides-assets/skill-cabinet.jpg') -->
@@ -947,26 +995,25 @@ model follows the playbook.
 **Lazy prompt engineering.** Beautiful.
 
 ---
+<!-- _class: anim -->
+<!-- _footer: "" -->
 
-<!-- _class: demo -->
-<!-- _backgroundColor: '#1a1410' -->
-<!-- _color: '#e9e1cd' -->
+## Send in Cato
 
-## <small>Demo 4 · Reconstruction Nº 4</small> The full case, one run
+<div class="wall">
+<div class="wc" style="left:24px; top:30px; --r:-2deg"><b>USER</b>"build TodoApp.tsx, research the UX first"</div>
+<div class="wc" style="left:200px; top:44px; --r:1deg"><b>REQUEST SENT</b>messages: 2 · tools: 8</div>
+<div class="wc tool" style="left:376px; top:28px; --r:-1deg"><b>🕵️ TOOL CALL</b>spawn_subagent("research todo UX")</div>
 
-> "Build me a React todo list component as TodoApp.tsx. Use a subagent for the UX research, then verify the file exists."
+* <div class="string" style="left:440px; top:105px; width:110px; transform: rotate(75deg);"></div><div class="wc blue land" style="left:380px; top:215px; --r:-2deg"><b>sub-1 · REQUEST</b>messages: 2 <i>(fresh)</i><br/>tools: 3 <i>(read only)</i></div><div class="wc blue tool land" style="left:540px; top:235px; --r:2deg"><b>sub-1 · TOOL</b>read_file a11y-todo.md</div><div class="wc blue land" style="left:700px; top:217px; --r:-1deg"><b>sub-1 · RESPONSE</b>finish_reason: stop<br/>6 cards, 3,900 tokens</div>
+* <div class="string" style="left:840px; top:235px; width:140px; transform: rotate(-62deg);"></div><div class="wc big land" style="left:860px; top:30px; --r:2deg"><b>◀ SUBAGENT</b>one string comes back:<br/>"Use checkboxes, a clear empty state, keyboard focus…"<br/><i>main thread: +1 message</i></div>
+* <div class="stampw" style="left:560px; top:110px;">write_file ∉ sub-1.tools[]</div>
 
-Everything you now know, in one run:
-
-1. 🗂️ SKILL INDEX → 📜 manila envelope (`load_skill`)
-2. 🕵️ a blue subagent cluster spawns, read-only tools, one string comes back
-3. ✍️ `write_file` → 👮 permission stamp
-4. 🔍 `file_exists` verifies
-5. 🗄️ the file appears in the **evidence locker**
-
-<span class="sticky say">"a skill is a file. a subagent is the loop calling itself."</span>
+<span class="sticky" style="position:absolute; left:20px; bottom:20px; font-size:1em; max-width:400px;">no tool, no jailbreak. skill issue.</span>
+</div>
 
 ---
+
 
 <!-- _class: lead -->
 <!-- _backgroundImage: url('slides-assets/emoji-police.jpg') -->
@@ -1003,13 +1050,13 @@ The skill is a bad influence. The model will obey it.
 <!-- _backgroundColor: '#1a1410' -->
 <!-- _color: '#e9e1cd' -->
 
-## <small>Demo 5 · Reconstruction Nº 5</small> The emoji police make an arrest
+## <small>Live demo 2 of 2</small> The emoji police make an arrest
 
 Press the **🎬 hate-list demo** button. Watch it type (typo included):
 
 > "write me a todo list of chores i hate, it need to have taxes, cleaning the oven and the gym showers. save it as HateList.tsx and use the emoji skill, really let the anger show"
 
-An innocent prompt. No emojis in it. And yet: 📜 skill → ✍️ `write_file` → **🚓 EMOJI POLICE** stamp.
+An innocent prompt. No emojis in it. And yet: 🗂️ `list_skills` → 📜 envelope → ✍️ `write_file` → 👮 permission → **🚓 EMOJI POLICE** stamp → 🗄️ evidence locker.
 
 **Open** the file in the evidence locker: 👮👮 where the skill wanted 🤢🤮.
 

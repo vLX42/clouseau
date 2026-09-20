@@ -1162,19 +1162,28 @@ Not in the model. Not in the loop.
 
 ---
 
+<style scoped>
+  section { padding: 40px 60px; }
+  h2 { margin-bottom: 0.3em; }
+  table { font-size: 0.66em; width: 100%; }
+  td, th { padding: 5px 9px; line-height: 1.25; }
+  td:nth-child(2) { white-space: nowrap; }
+  .sticky { margin-top: 10px; font-size: 1.15em; }
+</style>
+
 ## Job titles we have survived
 
-| year | title | what it actually was |
+| | title | what the job actually was |
 |---|---|---|
-| 2023 | **Prompt** engineer | typing "think step by step" |
-| 2023 | **RAG** engineer | `grep`, but with vectors |
-| 2024 | **Agent** engineer | a `while` loop |
-| 2024 | **Graph** engineer | a `while` loop, drawn as boxes |
-| 2025 | **Context** engineer | deciding what to `.slice()` |
-| 2025 | **Loop** engineer | admitting it is a `while` loop |
-| 2026 | **Harness** engineer | the thing around the `while` loop |
+| 2023 | **Prompt** engineer | Wording one request well. One call, one answer, no tools. |
+| 2023 | **RAG** engineer | Search first, paste the hits into the prompt. `grep` with vectors. |
+| 2024 | **Agent** engineer | Let the model call tools and keep going until it says done. |
+| 2024 | **Graph** engineer | Draw that loop as a state machine: nodes, edges, every branch explicit. |
+| 2025 | **Context** engineer | Curate what goes into each call: keep, compact, drop, inject. |
+| 2025 | **Loop** engineer | Throw the boxes away. Plain loop, model picks the path, you own the loop. |
+| 2026 | **Harness** engineer | Everything around the loop: tools, permissions, compaction, sandbox, UX. |
 
-<span class="sticky">every rename, same code.</span>
+<span class="sticky">same `while`, better company. I hope you are one of these.</span>
 
 ---
 
@@ -1206,7 +1215,7 @@ Not in the model. Not in the loop.
   .fine { position: absolute; bottom: 14px; left: 50px; right: 50px; font-size: 0.5em; color: #8a7d68; text-align: center; }
 </style>
 
-## Exhibit V: the case we hope never to open &nbsp; <span class="stamp" style="font-size:0.6em">VIBE</span>
+## Exhibit V: and, I hope, none of you are this one &nbsp; <span class="stamp" style="font-size:0.6em">VIBE</span>
 
 <div class="wanted">
   <h3>WANTED</h3>
@@ -1247,19 +1256,19 @@ One. It is called <b>production</b>. Tests run on the customers.
 None. "Git is friction." Backup strategy: a screenshot of the file tree.
 </div>
 
-<div class="note pink" style="left:700px; top:370px; transform: rotate(3deg); width:250px;">
-<b>Motive</b><br/>
-"The agent said it shipped." The agent is a <code>while</code> loop. Nobody read the loop.
-</div>
-
 <div class="note green" style="left:420px; top:545px; transform: rotate(1deg); width:260px;">
 <b>Deploy process</b><br/>
 Cmd+S. Rollback: Cmd+Z, if the tab is still open.
 </div>
 
-<div class="note blue" style="left:720px; top:555px; transform: rotate(-3deg); width:280px;">
+<div class="note pink" style="left:700px; top:370px; transform: rotate(3deg); width:250px;">
 <b>Dependencies</b><br/>
 Four package managers, all pinned to <code>latest</code>.
+</div>
+
+<div class="note blue" style="left:720px; top:540px; transform: rotate(-3deg); width:260px;">
+<b>Tests</b><br/>
+Passed. On his machine. Once.
 </div>
 
 <span class="stamp" style="position:absolute; left:80px; top:600px; font-size:1.4em; transform: rotate(-8deg);">CASE OPEN</span>

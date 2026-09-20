@@ -101,12 +101,13 @@ footer: 'Clouseau · agent visualiser · that is not my model'
 <!-- _backgroundImage: url('frontend/public/cover.png') -->
 <!-- _color: #f4ede0 -->
 <!-- _paginate: false -->
+<!-- _footer: "" -->
 
-<div class="plate" style="margin-top: 420px; text-shadow: 0 2px 8px rgba(0,0,0,0.85);">
+<div class="plate" style="position: absolute; right: 60px; top: 140px; width: 660px; text-align: right; background: linear-gradient(90deg, rgba(20,14,8,0) 0%, rgba(20,14,8,0.55) 25%, rgba(20,14,8,0.65) 100%); padding: 28px 30px 26px 80px; border-radius: 6px;">
 
-# Does Your <br/> Agent <br/> Bite?
+# Does Your <br/> Agent Bite?
 
-### your AI agent is a `while` loop in a ridiculous disguise
+### your AI agent is a `while` loop <br/> in a ridiculous disguise
 
 </div>
 

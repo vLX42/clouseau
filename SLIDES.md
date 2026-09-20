@@ -1162,6 +1162,112 @@ Not in the model. Not in the loop.
 
 ---
 
+## Job titles we have survived
+
+| year | title | what it actually was |
+|---|---|---|
+| 2023 | **Prompt** engineer | typing "think step by step" |
+| 2023 | **RAG** engineer | `grep`, but with vectors |
+| 2024 | **Agent** engineer | a `while` loop |
+| 2024 | **Graph** engineer | a `while` loop, drawn as boxes |
+| 2025 | **Context** engineer | deciding what to `.slice()` |
+| 2025 | **Loop** engineer | admitting it is a `while` loop |
+| 2026 | **Harness** engineer | the thing around the `while` loop |
+
+<span class="sticky">every rename, same code.</span>
+
+---
+
+<!-- _paginate: false -->
+<!-- _footer: "" -->
+<style scoped>
+  section { background: #ece4d3; padding: 0; overflow: hidden; display: block; }
+  section h2 { position: absolute; left: 50px; top: 28px; margin: 0; font-size: 1.5em; }
+  .note {
+    position: absolute; background: #fef7c2; padding: 8px 12px;
+    font-family: 'Caveat', cursive; font-size: 0.95em; line-height: 1.15;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.18); width: 280px;
+  }
+  .note b { color: #a8201a; }
+  .note code { font-size: 0.65em; }
+  .pink { background: #f9c7d1; }
+  .blue { background: #cfe3f7; }
+  .green { background: #d4efc9; }
+  .wanted {
+    position: absolute; right: 50px; top: 95px; width: 230px;
+    border: 3px double #7a1d14; background: #f4ede0; padding: 10px 14px;
+    text-align: center; font-family: 'Roboto Slab', serif; transform: rotate(2deg);
+    box-shadow: 3px 5px 10px rgba(0,0,0,0.2);
+  }
+  .wanted h3 { color: #7a1d14; letter-spacing: 4px; font-size: 1.1em; margin: 0; }
+  .wanted small { font-size: 0.5em; font-family: 'JetBrains Mono', monospace; display: block; margin-top: 4px; }
+  .wanted .face { font-size: 3.2em; line-height: 1.1; margin: 4px 0; }
+  .string { position: absolute; height: 2px; background: #a8201a; transform-origin: 0 0; opacity: 0.85; }
+  .fine { position: absolute; bottom: 14px; left: 50px; right: 50px; font-size: 0.5em; color: #8a7d68; text-align: center; }
+</style>
+
+## Exhibit V: the case we hope never to open &nbsp; <span class="stamp" style="font-size:0.6em">VIBE</span>
+
+<div class="wanted">
+  <h3>WANTED</h3>
+  <div class="face">🕶️</div>
+  <b>The Vibe Programmer</b>
+  <small>alias: "10x", "solo unicorn", "trust me"</small>
+  <small>last seen: production, 03:14 AM</small>
+</div>
+
+<div class="string" style="left:350px; top:205px; width:660px; transform: rotate(0.5deg);"></div>
+<div class="string" style="left:370px; top:470px; width:662px; transform: rotate(-14.9deg);"></div>
+<div class="string" style="left:680px; top:520px; width:386px; transform: rotate(-31deg);"></div>
+<div class="string" style="left:690px; top:610px; width:440px; transform: rotate(-41deg);"></div>
+<div class="string" style="left:940px; top:170px; width:80px; transform: rotate(25deg);"></div>
+
+<div class="note" style="left:50px; top:100px; transform: rotate(-3deg);">
+<b>Editor history</b><br/>
+Cursor → Lovable → Claude Code <b>Max 5x</b> → Codex <b>Pro</b> (the expensive one, obviously) → Grok <b>Heavy</b>. All five still open.
+</div>
+
+<div class="note pink" style="left:370px; top:105px; transform: rotate(2deg);">
+<b>The codebase</b><br/>
+500,000 files. Go, Rust, Python <i>and</i> JavaScript. One folder, named <code>final-v2-REAL</code>.
+</div>
+
+<div class="note" style="left:690px; top:100px; transform: rotate(-2deg); width:250px;">
+<b>Environments</b><br/>
+One. It is called <b>production</b>. Tests run on the customers.
+</div>
+
+<div class="note blue" style="left:50px; top:370px; transform: rotate(1.5deg); width:300px;">
+<b>Evidence 3</b><br/>
+<code>calculateTotal()</code> exists <b>seven times</b>. One is Rust, because "someone on X said it's faster". Nobody knows which one is called.
+</div>
+
+<div class="note green" style="left:390px; top:365px; transform: rotate(-2.5deg);">
+<b>Version control</b><br/>
+None. "Git is friction." Backup strategy: a screenshot of the file tree.
+</div>
+
+<div class="note pink" style="left:700px; top:370px; transform: rotate(3deg); width:250px;">
+<b>Motive</b><br/>
+"The agent said it shipped." The agent is a <code>while</code> loop. Nobody read the loop.
+</div>
+
+<div class="note green" style="left:420px; top:545px; transform: rotate(1deg); width:260px;">
+<b>Deploy process</b><br/>
+Cmd+S. Rollback: Cmd+Z, if the tab is still open.
+</div>
+
+<div class="note blue" style="left:720px; top:555px; transform: rotate(-3deg); width:280px;">
+<b>Dependencies</b><br/>
+Four package managers, all pinned to <code>latest</code>.
+</div>
+
+<span class="stamp" style="position:absolute; left:80px; top:600px; font-size:1.4em; transform: rotate(-8deg);">CASE OPEN</span>
+
+<div class="fine">Any resemblance to persons present in this room is purely coincidental. Probably. I suspect everyone… and no one.</div>
+
+---
+
 <!-- _class: lead -->
 <!-- _backgroundImage: url('slides-assets/courtroom.jpg') -->
 <!-- _color: #f4ede0 -->

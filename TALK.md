@@ -315,6 +315,20 @@ the loop:
 Close with: *"If you wanted to build the next Claude Code, the model is
 not your bottleneck. The harness is."*
 
+Then two comic beats before closing arguments:
+
+- **"Job titles we have survived."** Prompt → RAG → agent → graph →
+  context → loop → harness engineer, one row per year, third column
+  says what it actually was. Punchline: every rename, same code.
+- **"Exhibit V: the case we hope never to open."** A WANTED poster for
+  The Vibe Programmer on a chaotic evidence board: five editors still
+  open (Cursor → Lovable → Claude Code Max → Codex Pro → Grok Heavy),
+  500,000 files in four languages, `calculateTotal()` seven times (one in
+  Rust "because someone on X said it's faster"), no source control, one
+  environment called production. Fine print: any resemblance to persons
+  in the room is coincidental. Read the notes fast, let the room laugh,
+  do not linger; nobody should feel targeted.
+
 ---
 
 ## Live-demo cheat sheet

@@ -72,6 +72,7 @@ style: |
     text-align: center;
   }
   section.big h1 { font-size: 3.2em; line-height: 1.1; }
+  section.big h1:has(~ h1), section.big h1 ~ h1 { font-size: 2.5em; }
   section.big h2 { font-size: 2.2em; }
   section.case {
     display: flex;
@@ -1135,12 +1136,14 @@ On the final turn, the harness **injects a message**:
 ---
 
 <!-- _class: big -->
+<style scoped>
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { font-family: 'Roboto Slab', Georgia, serif; font-weight: 700; font-size: 2.3em; line-height: 1.2; margin: 0.3em 0; }
+</style>
 
-# The step cap is a prompt.
-
-# Compaction is a prompt.
-
-# The personality is a prompt.
+* The step cap is a prompt.
+* Compaction is a prompt.
+* The personality is a prompt.
 
 ---
 

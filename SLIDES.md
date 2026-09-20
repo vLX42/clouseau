@@ -137,6 +137,25 @@ It feels *alive*.
 ---
 
 <!-- _class: big -->
+<!-- transition: fade -->
+<style scoped>
+  section h1 { font-size: 2.6em; }
+  ul { list-style: none; padding: 0; margin-top: 0.3em; }
+  li { font-size: 1.4em; margin: 0.1em 0; color: #5a4634; }
+  li:last-child { color: #1a1a1a; font-weight: 700; margin-top: 0.5em; font-size: 1.15em; }
+</style>
+
+# That feeling has a name.
+
+* Not *intelligence*.
+* Not *agency*.
+* Not *magic*.
+* Five letters. Lowercase. You have typed it a thousand times.
+
+---
+
+<!-- _class: big -->
+<!-- transition: drop -->
 
 # `fetch`
 

@@ -137,7 +137,7 @@ It feels *alive*.
 ---
 
 <!-- _class: big -->
-<!-- transition: fade -->
+<!-- _transition: drop -->
 <style scoped>
   section h1 { font-size: 2.6em; }
   ul { list-style: none; padding: 0; margin-top: 0.3em; }
@@ -155,7 +155,6 @@ It feels *alive*.
 ---
 
 <!-- _class: big -->
-<!-- transition: drop -->
 
 # `fetch`
 

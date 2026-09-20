@@ -64,7 +64,7 @@ If they internalise these three, the rest is mechanics.
 | **Permission gate** | The harness checking, before executing a side-effect tool, whether the user has approved. |
 | **Skill** | A markdown file with focused instructions that the harness loads and shoves into context when relevant. |
 | **System prompt** | The first message in the messages array, role `"system"`. The model treats it as standing orders. Re-sent every turn. |
-| **Project instructions** | A file like `CLAUDE.md` / `AGENTS.md` the harness reads from disk and appends to the system prompt at session start. |
+| **Project instructions** | A file like `AGENTS.md` (Codex, Copilot, Cursor) or `CLAUDE.md` (Claude Code) the harness reads from disk and appends to the system prompt at session start. |
 | **Subagent** | A second harness instance the main agent spawns to do a focused job. Has its own messages array, its own loop, its own budget. Returns one result. |
 
 ---
@@ -171,9 +171,9 @@ Point out:
 Draw the funnel on the board:
 
 ```
-   global rules (~/.claude/CLAUDE.md)
+   global rules (~/.codex/AGENTS.md, ~/.claude/CLAUDE.md)
               │
-   project rules (./CLAUDE.md, ./AGENTS.md)
+   project rules (./AGENTS.md, ./CLAUDE.md)
               │
    skill (loaded on demand)
               │

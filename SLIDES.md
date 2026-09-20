@@ -121,7 +121,8 @@ footer: 'Clouseau · agent visualiser · that is not my model'
 
 You know the feeling.
 
-Claude Code edits five files, runs the tests,
+Copilot, Codex, Claude Code, pick one.
+It edits five files, runs the tests,
 and tells you it **shipped**.
 
 It feels *alive*.
@@ -178,7 +179,7 @@ Everything that feels like *intelligence*
 is the harness choosing **what JSON to send next**.
 
 > Remember these three, and you could build your own
-> Claude Code by Wednesday. (We won't. But you could.)
+> Codex by Wednesday. (We won't. But you could.)
 
 ---
 
@@ -211,7 +212,7 @@ is the harness choosing **what JSON to send next**.
 
 ---
 
-I open Claude Code. I type:
+I open my agent. Copilot, Codex, whichever. I type:
 
 > "Add dark mode to App.tsx and verify the build."
 
@@ -373,9 +374,9 @@ The result goes back in the array. Loop again.
 
 ---
 
-Cursor has this loop.
+Copilot has this loop. Codex has this loop.
 
-Claude Code has this loop.
+Claude Code has this loop. Cursor has this loop.
 
 The startup with **$80M ARR** has this loop.
 
@@ -697,8 +698,8 @@ Click any REQUEST SENT card. Scroll to `messages[0]`.
 That string is glued together **every turn** from:
 
 - the `SYSTEM` constant in the harness
-- `~/.claude/CLAUDE.md` — your global rules
-- `./CLAUDE.md`, `./AGENTS.md` — project rules
+- `./AGENTS.md` — project rules. Codex, Copilot, Cursor, Jules all read it
+- `~/.codex/AGENTS.md` (or `~/.claude/CLAUDE.md`) — your global rules
 - tool descriptions, skill bodies
 
 ---
@@ -1111,9 +1112,9 @@ On the final turn, the harness **injects a message**:
 
 ---
 
-## Clouseau vs Claude Code
+## Clouseau vs the real thing
 
-| | **Clouseau (600 LOC)** | **Claude Code** |
+| | **Clouseau (600 LOC)** | **Claude Code** (from the leak) |
 |---|---|---|
 | Loop | ✓ | ✓ same shape |
 | Tools | 8 | ~40, 19 gated |
@@ -1165,8 +1166,8 @@ Not in the model. Not in the loop.
 <style scoped>
   section { padding: 36px 50px; }
   h2 { margin-bottom: 0.3em; }
-  table { font-size: 0.6em; width: 100%; }
-  td, th { padding: 5px 8px; line-height: 1.25; vertical-align: top; }
+  table { font-size: 0.58em; width: 100%; }
+  td, th { padding: 4px 8px; line-height: 1.25; vertical-align: top; }
   td:nth-child(2) { white-space: nowrap; }
   td:nth-child(4) { color: #5a4634; }
   .sticky { margin-top: 8px; font-size: 1.1em; }
@@ -1180,8 +1181,8 @@ Not in the model. Not in the loop.
 | 2023 | **RAG** engineer | A chat that can look things up. Embed your docs, search, paste the hits into the prompt. | LangChain, LlamaIndex, Pinecone / pgvector, "chat with your PDF" |
 | 2023 | **Agent** engineer | Give the model tools and let it act, not just answer. The `while` loop is born. | AutoGPT, BabyAGI, ReAct, OpenAI function calling (June '23) |
 | 2024 | **Graph** engineer | Draw the agent as a flowchart. Nodes, edges, explicit branches, a box per step. | LangGraph, CrewAI, AutoGen, n8n |
-| 2025 | **Context** engineer | Manage what the model sees each turn. Keep, compact, drop, inject. | `CLAUDE.md`, `AGENTS.md`, cursor rules, MCP, Lütke & Karpathy's tweets |
-| 2025 | **Loop** engineer | A shell loop around the agent. Fresh context every pass, the repo is the memory, run until done. | the Ralph Wiggum loop, `while :; do claude -p < PROMPT.md; done` |
+| 2025 | **Context** engineer | Manage what the model sees each turn. Keep, compact, drop, inject. | `AGENTS.md`, `copilot-instructions.md`, `CLAUDE.md`, MCP, Lütke's tweet |
+| 2025 | **Loop** engineer | A shell loop around the agent. Fresh context every pass, the repo is the memory, run until done. | the Ralph Wiggum loop, `while :; do codex exec < PROMPT.md; done` |
 | 2026 | **Harness** engineer | Everything around the loop. Tools, permissions, compaction, sandbox, UX. | Claude Code, Codex, OpenHands, pi, OpenAI's "harness engineering" post |
 
 <span class="sticky">same `while`, new business card. I hope you are one of these.</span>

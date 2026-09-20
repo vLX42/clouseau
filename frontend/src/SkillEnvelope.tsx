@@ -67,6 +67,7 @@ export default function SkillEnvelope({
       )}
       {expanded && (
         <pre
+          className="scrollbox"
           style={{
             fontSize: 7,
             marginTop: 8,

@@ -312,6 +312,7 @@ export default function Card({ ev, expanded }: { ev: Placed; expanded: boolean }
         <span style={{ float: "right", opacity: 0.6 }}>t{ev.turn}</span>
       </div>
       <div
+        className={expanded ? "scrollbox" : undefined}
         style={{
           fontSize: expanded ? 9 : 8,
           whiteSpace: "pre-wrap",
@@ -325,6 +326,7 @@ export default function Card({ ev, expanded }: { ev: Placed; expanded: boolean }
       </div>
       {expanded && (
         <div
+          className="scrollbox"
           style={{
             marginTop: 8,
             padding: 6,

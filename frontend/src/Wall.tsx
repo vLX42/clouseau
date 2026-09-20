@@ -443,10 +443,13 @@ export default function Wall(props: Props) {
           // Trackpad pinch arrives as a ctrlKey wheel event and uses
           // smoothStep (library default 0.001 feels glacial on stage).
           // Two-finger scroll-zoom uses step; real touch pinch uses pinch.step.
-          wheel={{ step: 0.12, smoothStep: 0.004 }}
+          // Wheel and drag inside an expanded card's body (.scrollbox) go to
+          // that box, so the messages array can be scrolled through instead
+          // of zooming the whole wall.
+          wheel={{ step: 0.12, smoothStep: 0.004, excluded: ["scrollbox"] }}
           pinch={{ step: 12 }}
           doubleClick={{ disabled: true }}
-          panning={{ velocityDisabled: true }}
+          panning={{ velocityDisabled: true, excluded: ["scrollbox"] }}
         >
           <Inner {...props} containerSize={size} />
         </TransformWrapper>

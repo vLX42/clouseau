@@ -93,6 +93,7 @@ export default function Stamp({ ev, expanded }: { ev: Placed; expanded: boolean 
       </div>
       {expanded && (
         <pre
+          className="scrollbox"
           style={{
             fontSize: 7,
             marginTop: 8,

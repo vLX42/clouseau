@@ -88,6 +88,7 @@ export default function Polaroid({
         </div>
       )}
       <div
+        className={expanded ? "scrollbox" : undefined}
         style={{
           background: "#1a1a1a",
           color: "#e9e1cd",

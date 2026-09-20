@@ -20,6 +20,9 @@ pnpm dev                        # harness on :3737, wall on :5173
 - Open `http://localhost:5173` in a Chromium browser, full screen. Pinch on
   the trackpad zooms the wall (tuned to be quick), drag to pan, "follow on"
   keeps the newest card in view.
+- To walk through a `messages` array: pinch in on a REQUEST SENT card, click
+  it to expand, then two-finger scroll *inside* the card body. The body
+  scrolls; the wall stays put. Scroll outside the body to zoom again.
 - Open `SLIDES.html` in a second window. Fragments and transitions only work
   in the HTML deck.
 - Run live demo 1 once for real before the talk, so you know the key works

@@ -423,6 +423,29 @@ Pick one and stick with it. Mixing metaphors is how you lose the room.
 - **Multi-agent frameworks (CrewAI, LangGraph, AutoGen).** If the
   audience asks: these are subagent-orchestration libraries. Same
   underlying loop. Don't get drawn into framework comparisons.
+- The "hype titles" slide name-drops RAG, MCP, LangGraph and CrewAI.
+  That is fine: name-drop, don't explain. Same answer as above if asked.
+
+## Q&A ammunition (cut from the deck, keep in your head)
+
+- **"What about prompt caching?"** The provider keeps the repeated prefix
+  of the array warm so it is cheaper to process again. Caching saves
+  compute, it does not create memory. The whole array still arrives
+  every turn.
+- **opencode `while (true)`.** `packages/opencode/src/session/prompt.ts`
+  line 1088 on `dev` at commit `ebb7b76` (checked 20 Sep 2026). Use the
+  permalink `github.com/anomalyco/opencode/blob/ebb7b76/packages/opencode/src/session/prompt.ts#L1088`
+  in case the line drifts before the talk.
+- **Claude Code leak numbers.** v2.1.88, 30 Mar 2026, `.map` files in the
+  npm tarball. 512,000 lines across 1,906 TypeScript files;
+  `QueryEngine.ts` 46,000 lines. Pulled the same day.
+- **Line counts.** Clouseau's server is ~1,100 lines: `agent.ts` 666,
+  `tools.ts` 341, `compaction.ts` 77. The loop itself is 12 lines. Use
+  "~1,100" everywhere, never "200" or "600".
+- **Emoji police is family-friendly.** The `emoji-maximalist` skill
+  demands 🤬, 💩 and the 🤢🤮 combo on the rant list; the police
+  (`policeEmojis` in `tools.ts`) confiscate exactly those and stamp 👮
+  in their place. Nothing cruder than that anywhere in the demo.
 
 ---
 

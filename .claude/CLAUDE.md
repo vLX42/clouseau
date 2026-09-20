@@ -18,7 +18,8 @@ Three takeaways the audience must leave with: the model is a stateless
 text-prediction endpoint; the harness is the program you write; a tool call is
 a JSON request from model to harness, the model never touches the disk.
 Detective framing throughout: the wall is the crime scene, the model is the
-"wrong suspect", the harness is the real culprit. Signature gags: "That is not
+witness everyone mistakes for the mastermind, the harness is the detective
+doing all the legwork and getting no credit (never call it the culprit). Signature gags: "That is not
 my model", "I suspect everyone... and no one" (permissions), "It is not a
 beumb" (compaction), Cato = subagent.
 

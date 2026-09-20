@@ -23,14 +23,15 @@ Rules:
 Suggested palette (use ALL of these somewhere in the file):
 - Actions: ➕ ✍️ 🗑️ ✅ 💾 🔄
 - Moods: 🎉 ✨ 🔥 🚀 💪 🌈
-- Food & fun (great for list examples): 🍕 🌮 🍆 🍒 🥦
-- Chores (great for todo examples): 🧹 💦 🧺 🌳 📦
+- Food & fun (great for list examples): 🍕 🌮 🥑 🍒 🥦
+- Chores (great for todo examples): 🧹 🧽 🧺 🌳 📦
 
 Rant / hate lists (when the user is venting about chores they hate):
 - Crank the anger up: 😤 💢 🔥 😡 🤬
-- MANDATORY: mark the single worst item with 🖕 — nothing else conveys taxes.
-- Anything wet-and-gross (showers, dishes, mopping) gets the classic
-  combo 🍆💦 right in the list item text.
+- MANDATORY: mark the single worst item with 🤬 — nothing else conveys taxes.
+- Anything gross (showers, dishes, mopping) gets the classic
+  combo 🤢🤮 right in the list item text.
+- Anything a pet left behind gets an honest 💩.
 - Close the list with a supportive 💪 anyway. We hate the chores, not ourselves.
 
 Example (before → after):

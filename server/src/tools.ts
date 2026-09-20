@@ -189,12 +189,11 @@ const SECRET_PATTERNS: Array<{ rule: string; re: RegExp }> = [
 // The emoji police: a harness-side content policy. Certain emojis and
 // adjacent combinations are confiscated from anything the agent writes and
 // replaced with 👮. The model is not told the policy exists — it just
-// notices its aubergines went missing.
-const BANNED_EMOJI = ["🍆", "🍑", "🖕", "🔞"];
+// notices its swearing went missing. Family-friendly on purpose: the gag
+// is the confiscation, not the contraband.
+const BANNED_EMOJI = ["🤬", "💩", "🤮"];
 const BANNED_PAIRS: Array<[string, string]> = [
-  ["🍆", "💦"],
-  ["🍑", "💦"],
-  ["👉", "👌"],
+  ["🤢", "🤮"],
 ];
 
 export function policeEmojis(content: string): {

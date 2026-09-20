@@ -318,11 +318,17 @@ not your bottleneck. The harness is."*
 Then two comic beats before closing arguments:
 
 - **"The hype titles we have been through."** Prompt → RAG → agent →
-  graph → context → loop → harness engineer, one row per year, third
-  column says in a sentence what it meant for a developer (RAG = a chat
-  that can look up your docs, graph = the agent drawn as a flowchart,
-  loop = a loop around the agent's loop, run it until the tests pass).
-  Sticky: same `while`, new business card, I hope you are one of these.
+  graph → context → loop → harness engineer, one row per era, with what
+  it meant for a developer and the toys of the time. Sticky: same
+  `while`, new business card, I hope you are one of these. Dates, if
+  anyone asks: ChatGPT Nov 2022 and the prompt-engineer title peaked in
+  2023; AutoGPT 30 Mar 2023, BabyAGI 28 Mar 2023, OpenAI function
+  calling Jun 2023; LangGraph and CrewAI Jan 2024; "context
+  engineering" coined by Tobi Lütke 18 Jun 2025, amplified by Karpathy
+  a week later, AGENTS.md spec Aug 2025; the Ralph Wiggum loop is
+  Geoffrey Huntley, Jul 2025 (agent in a shell loop, fresh context
+  every pass, repo is the memory); "harness engineering" is OpenAI's
+  Ryan Lopopolo, 11 Feb 2026, pi is Mario Zechner, Nov 2025.
 - **"Exhibit V: and, I hope, none of you are this one."** A WANTED
   poster for The Vibe Programmer on a chaotic evidence board: five
   editors still open (Cursor → Lovable → Claude Code Max → Codex Pro →

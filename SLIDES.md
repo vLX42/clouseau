@@ -1163,25 +1163,26 @@ Not in the model. Not in the loop.
 ---
 
 <style scoped>
-  section { padding: 40px 60px; }
+  section { padding: 36px 50px; }
   h2 { margin-bottom: 0.3em; }
-  table { font-size: 0.66em; width: 100%; }
-  td, th { padding: 5px 9px; line-height: 1.25; }
+  table { font-size: 0.6em; width: 100%; }
+  td, th { padding: 5px 8px; line-height: 1.25; vertical-align: top; }
   td:nth-child(2) { white-space: nowrap; }
-  .sticky { margin-top: 10px; font-size: 1.15em; }
+  td:nth-child(4) { color: #5a4634; }
+  .sticky { margin-top: 8px; font-size: 1.1em; }
 </style>
 
 ## The hype titles we have been through
 
-| | title | what it meant for a developer |
-|---|---|---|
-| 2023 | **Prompt** engineer | Getting a chatbot to answer well by wording the question. One call, one answer. |
-| 2023 | **RAG** engineer | A chat that can look things up. Search your docs, paste the hits into the prompt. |
-| 2024 | **Agent** engineer | Give the model tools and let it act, not just answer. The `while` loop is born. |
-| 2024 | **Graph** engineer | Draw the agent as a flowchart. Nodes, edges, explicit branches, a box per step. |
-| 2025 | **Context** engineer | Manage what the model sees each turn. Keep, compact, drop, inject. |
-| 2025 | **Loop** engineer | A loop around the agent's loop. Run it again and again until the tests pass. |
-| 2026 | **Harness** engineer | Everything around the loop. Tools, permissions, compaction, sandbox, UX. |
+| | title | what it meant for a developer | the toys of the era |
+|---|---|---|---|
+| 2023 | **Prompt** engineer | Getting a chatbot to answer well by wording the question. One call, one answer. | ChatGPT, "act as a…", few-shot, "think step by step", PromptBase |
+| 2023 | **RAG** engineer | A chat that can look things up. Embed your docs, search, paste the hits into the prompt. | LangChain, LlamaIndex, Pinecone / pgvector, "chat with your PDF" |
+| 2023 | **Agent** engineer | Give the model tools and let it act, not just answer. The `while` loop is born. | AutoGPT, BabyAGI, ReAct, OpenAI function calling (June '23) |
+| 2024 | **Graph** engineer | Draw the agent as a flowchart. Nodes, edges, explicit branches, a box per step. | LangGraph, CrewAI, AutoGen, n8n |
+| 2025 | **Context** engineer | Manage what the model sees each turn. Keep, compact, drop, inject. | `CLAUDE.md`, `AGENTS.md`, cursor rules, MCP, Lütke & Karpathy's tweets |
+| 2025 | **Loop** engineer | A shell loop around the agent. Fresh context every pass, the repo is the memory, run until done. | the Ralph Wiggum loop, `while :; do claude -p < PROMPT.md; done` |
+| 2026 | **Harness** engineer | Everything around the loop. Tools, permissions, compaction, sandbox, UX. | Claude Code, Codex, OpenHands, pi, OpenAI's "harness engineering" post |
 
 <span class="sticky">same `while`, new business card. I hope you are one of these.</span>
 

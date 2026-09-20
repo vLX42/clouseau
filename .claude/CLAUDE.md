@@ -37,6 +37,7 @@ Keep the root free of `CLAUDE.md`/`AGENTS.md` unless it is a tiny, deliberate
 
 | Path | What it is |
 |---|---|
+| `demo.md` | Runbook for the six live demos (prompt, cards in order, clicks, say-line, fallback, env restarts). Keep in sync with the `_class: demo` cue slides in `SLIDES.md`. |
 | `TALK.md` | Talk outline, act structure, vocabulary table, the 11 live-demo prompts, analogies, what to skip. The source of truth for content. |
 | `SLIDES.md` | Marp deck (~90 slides), sepia case-file styling, 5 "Reconstruction" break-outs where you leave the slides and run the live app. `SLIDES.html` / `SLIDES.pptx` are renders of it, regenerate rather than edit. |
 | `slides-assets/` | Generated illustrations used as slide backgrounds (dog-bite, beumb, doom-loop, skill-cabinet, ...). |
@@ -95,6 +96,4 @@ The recurring punchline for all of these: **it is a prompt, not infrastructure**
 
 - `frontend/public/cover.png` still shows Columbo per `TALK.md`; needs
   regenerating for Clouseau.
-- `vite.config.ts` proxies `/run` and `/health` but not `/reset`, so "new
-  session" in dev never clears server-side state. Add `/reset` to the proxy.
 - Folder rename `columbo` → `clouseau` never happened.

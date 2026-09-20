@@ -8,6 +8,7 @@ export default defineConfig({
     proxy: {
       "/run": { target: "http://localhost:3737", changeOrigin: true },
       "/health": { target: "http://localhost:3737", changeOrigin: true },
+      "/reset": { target: "http://localhost:3737", changeOrigin: true },
     },
   },
 });

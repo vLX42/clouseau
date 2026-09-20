@@ -343,7 +343,8 @@ Then two comic beats before closing arguments:
 
 ## Live-demo cheat sheet
 
-Bookmark these prompts. Run them in order during the talk.
+Bookmark these prompts. The six that are actually in the deck, with cards,
+clicks and fallbacks, are in `demo.md`. This list is the full menu.
 
 1. **Cold open in Claude Code (or competitor):** *"Add a working dark-mode
    toggle to App.tsx, verify the build passes."*

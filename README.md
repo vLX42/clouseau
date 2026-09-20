@@ -19,6 +19,7 @@ Detective framing throughout. The "crazy wall" is the crime scene, the model is 
 | Path | What it is |
 |---|---|
 | [`TALK.md`](TALK.md) | Talk outline, act structure, vocabulary, the 11 live-demo prompts. Source of truth for content. |
+| [`demo.md`](demo.md) | Runbook for the six live demos: prompt, expected cards, what to click, what to say, fallback. |
 | [`SLIDES.md`](SLIDES.md) | Marp deck, ~115 slides, sepia case-file styling. `SLIDES.html` is a render of it. |
 | `server/` | **The harness.** `agent.ts` is the `while` loop (~660 lines), `tools.ts` the tool schemas, executors and guards, `compaction.ts` the summarise-and-replace step, `index.ts` a Hono server streaming events over SSE. Talks to OpenAI chat completions with raw `fetch`. No SDK, on purpose. |
 | `frontend/` | **The crazy wall.** React + Vite visualiser. Every harness event becomes a card, stamp, polaroid, sticky note or manila envelope pinned to a wall with red string between them. Live token/cost ticker. |

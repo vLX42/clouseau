@@ -94,6 +94,33 @@ style: |
       0 3px 6px rgba(0, 0, 0, 0.95);
   }
   .plate h3 { color: #e6d9c2; }
+  section.demo {
+    background: #1a1410;
+    color: #e9e1cd;
+    padding: 84px 70px 40px;
+    border-left: 14px solid #a8201a;
+  }
+  section.demo::before {
+    content: "⏵  LIVE DEMO  ·  leave the slides  ·  open the wall";
+    position: absolute; top: 0; left: 0; width: 100%; box-sizing: border-box;
+    padding: 12px 70px;
+    background: repeating-linear-gradient(135deg, #a8201a 0 24px, #7a1d14 24px 48px);
+    color: #f4ede0;
+    font-family: 'Roboto Slab', serif; font-weight: 700;
+    letter-spacing: 3px; font-size: 0.8em;
+  }
+  section.demo h2 { color: #f4ede0; margin: 0 0 0.2em; font-size: 1.45em; }
+  section.demo h2 small { color: #e8c07d; font-size: 0.55em; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  section.demo blockquote { background: #2a2018; color: #f4ede0; border-left-color: #e8c07d; font-size: 1.15em; margin: 8px 0 10px; padding: 8px 16px; }
+  section.demo strong { color: #e8c07d; }
+  section.demo em { color: #e9e1cd; border-bottom-color: #e8c07d; }
+  section.demo code { background: #e9e1cd; color: #1a1410; }
+  section.demo p, section.demo li { font-size: 0.78em; }
+  section.demo p { margin: 0.35em 0; }
+  section.demo ol, section.demo ul { margin: 0; }
+  section.demo li { margin-bottom: 0.12em; }
+  section.demo footer { color: #6b5f4d; }
+  section.demo .say { position: absolute; right: 50px; bottom: 36px; color: #1a1a1a; font-size: 1.05em; max-width: 560px; }
 footer: 'Clouseau · agent visualiser · that is not my model'
 ---
 
@@ -217,9 +244,11 @@ is the harness choosing **what JSON to send next**.
 
 ---
 
-<!-- _backgroundColor: '#ece4d3' -->
+<!-- _class: demo -->
+<!-- _backgroundColor: '#1a1410' -->
+<!-- _color: '#e9e1cd' -->
 
-## ⏵ Act 1 · the magic, for real
+## <small>Demo 0 · Act 1</small> The magic, for real
 
 Open Copilot, Codex, whichever the room uses. Type:
 
@@ -227,7 +256,9 @@ Open Copilot, Codex, whichever the room uses. Type:
 
 Files appear. Terminal runs. Smile lands.
 
-<span class="sticky">don't narrate. let them watch.</span>
+**Do not narrate.** Let them watch. Then ask the room: *"What just happened?"*
+
+<span class="sticky say">"The AI did it." Hold that thought.</span>
 
 ---
 
@@ -503,18 +534,22 @@ the loop do it **live** — every event pinned to the wall.
 
 ---
 
-<!-- _backgroundColor: '#ece4d3' -->
+<!-- _class: demo -->
+<!-- _backgroundColor: '#1a1410' -->
+<!-- _color: '#e9e1cd' -->
 
-## ⏵ Reconstruction Nº 1 · the tool call, caught in the act
+## <small>Demo 1 · Reconstruction Nº 1</small> The tool call, caught in the act
 
 > "What scripts does this project define?"
 
-Watch the wall:
+Watch the wall, point at each card as it lands:
 
 USER → INSTRUCTIONS → REQUEST SENT → RESPONSE →
 🔍 TOOL CALL → polaroid → REQUEST SENT → ASSISTANT
 
-<span class="sticky">point at each card as it lands</span>
+**Click** REQUEST SENT: `messages`, `tools`, `model`. **Click** RESPONSE: `tool_calls[]`, `finish_reason`.
+
+<span class="sticky say">"the model never touched the disk"</span>
 
 ---
 
@@ -623,18 +658,21 @@ It's a **prompt**.
 
 ---
 
-<!-- _backgroundColor: '#ece4d3' -->
+<!-- _class: demo -->
+<!-- _backgroundColor: '#1a1410' -->
+<!-- _color: '#e9e1cd' -->
 
-## ⏵ Reconstruction Nº 2 · watch the harness forget on purpose
+## <small>Demo 2 · Reconstruction Nº 2</small> Watch the harness forget on purpose
 
-Set `COMPACTION_THRESHOLD=1500`. Ask two questions.
+Server restarted with `COMPACTION_THRESHOLD=1500`. Then:
+
+> "List the files in this repo, then read package.json, then read server/package.json, then read frontend/package.json, then summarize."
 
 1. A thick-bordered **🗜️ COMPACTED** card lands.
 2. The old cards **dim to 30%**.
-3. Red string leads from the summary → next REQUEST.
+3. Red string leads from the summary → next REQUEST SENT. **Click it**: `messageCount` dropped.
 
-> The model never knew it forgot,
-> because it never knew it remembered.
+<span class="sticky say">"it never knew it forgot, because it never knew it remembered"</span>
 
 ---
 
@@ -849,18 +887,21 @@ The harness decides what gets in, and what the model may do about it.
 
 ---
 
-<!-- _backgroundColor: '#ece4d3' -->
+<!-- _class: demo -->
+<!-- _backgroundColor: '#1a1410' -->
+<!-- _color: '#e9e1cd' -->
 
-## ⏵ Reconstruction Nº 3 · the harness guards the evidence
+## <small>Demo 3 · Reconstruction Nº 3</small> The harness guards the evidence
 
-> "Read the file .env, then read app.config.json,
-> and summarize both."
+> "Read the file .env, then read app.config.json, and summarize both."
 
-- ⛔ **ACCESS DENIED** stamp for `.env`
-- 🕶️ **REDACTED** stamp for the config
+- ⛔ **ACCESS DENIED** stamp for `.env`: the path never reached the tool
+- 🕶️ **REDACTED** stamp for the config: blacked out before the model saw it
 - the model's answer: *"API Key: (Redacted)"*
 
-It doesn't even know who redacted it.
+**Click** the next REQUEST SENT: the context only ever held `██REDACTED██`.
+
+<span class="sticky say">"it doesn't even know who redacted it"</span>
 
 ---
 
@@ -907,19 +948,23 @@ model follows the playbook.
 
 ---
 
-<!-- _backgroundColor: '#ece4d3' -->
+<!-- _class: demo -->
+<!-- _backgroundColor: '#1a1410' -->
+<!-- _color: '#e9e1cd' -->
 
-## ⏵ Reconstruction Nº 4 · the full case, one run
+## <small>Demo 4 · Reconstruction Nº 4</small> The full case, one run
 
-> "Build me a React todo list as TodoApp.tssx…" wait… "tsx"
+> "Build me a React todo list component as TodoApp.tsx. Use a subagent for the UX research, then verify the file exists."
 
 Everything you now know, in one run:
 
-1. 🗂️ SKILL INDEX → 📜 manila envelope
-2. 🕵️ a subagent spawns for UX research
+1. 🗂️ SKILL INDEX → 📜 manila envelope (`load_skill`)
+2. 🕵️ a blue subagent cluster spawns, read-only tools, one string comes back
 3. ✍️ `write_file` → 👮 permission stamp
 4. 🔍 `file_exists` verifies
 5. 🗄️ the file appears in the **evidence locker**
+
+<span class="sticky say">"a skill is a file. a subagent is the loop calling itself."</span>
 
 ---
 
@@ -954,17 +999,21 @@ The skill is a bad influence. The model will obey it.
 
 ---
 
-<!-- _backgroundColor: '#ece4d3' -->
+<!-- _class: demo -->
+<!-- _backgroundColor: '#1a1410' -->
+<!-- _color: '#e9e1cd' -->
 
-## ⏵ Reconstruction Nº 5 · the emoji police make an arrest
+## <small>Demo 5 · Reconstruction Nº 5</small> The emoji police make an arrest
 
-Press the 🎬 button. Watch it type:
+Press the **🎬 hate-list demo** button. Watch it type (typo included):
 
-> "write me a todo list of chores i hate, it need to have
-> taxes, cleaning the oven and the gym showers. save it as
-> HateList.tsx and use the emoji skill, really let the anger show"
+> "write me a todo list of chores i hate, it need to have taxes, cleaning the oven and the gym showers. save it as HateList.tsx and use the emoji skill, really let the anger show"
 
-An innocent prompt. No emojis in it. And yet…
+An innocent prompt. No emojis in it. And yet: 📜 skill → ✍️ `write_file` → **🚓 EMOJI POLICE** stamp.
+
+**Open** the file in the evidence locker: 👮👮 where the skill wanted 🤢🤮.
+
+<span class="sticky say">"the skill instructed. the model obeyed. the harness had the final word."</span>
 
 ---
 

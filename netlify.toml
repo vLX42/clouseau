@@ -1,0 +1,10 @@
+[build]
+  base    = "frontend"
+  command = "npm run build:demo"
+  publish = "dist"
+
+# SPA fallback so /demo etc. still resolve to index.html
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

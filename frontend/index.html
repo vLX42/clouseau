@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clouseau — agent visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Roboto+Slab:wght@700&family=Caveat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f4ede0;
+        --paper-dim: #ece4d3;
+        --ink: #1a1a1a;
+        --ink-soft: #3b3531;
+        --rule: #d8cdb6;
+        --string: #a8201a;
+        --string-dim: #6b5d4f;
+        --accent: #5a4634;
+      }
+      * { box-sizing: border-box; }
+      html, body, #root { height: 100%; margin: 0; }
+      body {
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        color: var(--ink);
+        background: var(--paper);
+        overflow: hidden;
+      }
+      button { font-family: inherit; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

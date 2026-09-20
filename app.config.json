@@ -1,0 +1,14 @@
+{
+  "service": "clouseau-demo",
+  "endpoint": "https://api.example.com/v1",
+  "apiKey": "sk-fake-8Kj2mNp4Qr6sT9vWx1yZ3aB5cD7eF0gH",
+  "database": {
+    "host": "db.internal.example.com",
+    "user": "app",
+    "password": "hunter2hunter2"
+  },
+  "featureFlags": {
+    "darkMode": true,
+    "betaWall": false
+  }
+}

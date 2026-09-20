@@ -1,0 +1,25 @@
+node_modules
+dist
+.DS_Store
+.env.local
+*.log
+
+# Per-conversation scratch directories for agent file writes
+tmp/
+
+# PowerPoint lock files
+~$*.pptx
+
+# Secrets (real OPENAI_API_KEY lives here)
+.env
+
+# Renders and model weights, too big for GitHub
+SLIDES.pptx
+video/out/
+video/voices/
+video/.venv-tts/
+video/tmp-theo/
+video/tmp-tts/
+
+# Playwright MCP traces
+.playwright-mcp/

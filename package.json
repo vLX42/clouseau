@@ -1,0 +1,18 @@
+{
+  "name": "clouseau",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "workspaces": [
+    "server",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n server,web -c blue,magenta \"pnpm --filter clouseau-server dev\" \"pnpm --filter clouseau-frontend dev\"",
+    "agent": "pnpm --filter clouseau-server agent",
+    "build": "pnpm --filter clouseau-frontend build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}

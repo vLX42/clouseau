@@ -65,7 +65,11 @@ Env knobs (`.env`, read by `server/src/env.ts`): `MODEL` (gpt-4o-mini),
 
 Demo replay without burning tokens: `?demo=1` on the frontend URL, or
 `npm run build:demo` (this is what Netlify/Vercel deploy, see `netlify.toml`).
-`frontend/public/demo.jsonl` is a real captured run.
+The app also drops into replay-only on its own when `/health` is unreachable
+or reports `apiKey: false` (`detectMode` in `frontend/src/eventBus.ts`).
+Recordings are `frontend/public/demos/*.jsonl`, listed in `demos/index.json`;
+`1-todo` and `2-hate-list` are the two live-demo prompts, `3-full-case` the
+older long run.
 
 ## Harness features the wall visualises
 

@@ -7,7 +7,9 @@ import type { Event } from "./events.ts";
 
 const app = new Hono();
 
-app.get("/health", (c) => c.json({ ok: true }));
+// The frontend probes this on load. No key (or no server at all, as on a
+// static deploy) means the wall falls back to replaying recordings.
+app.get("/health", (c) => c.json({ ok: true, apiKey: Boolean(process.env.OPENAI_API_KEY) }));
 
 app.post("/reset", async (c) => {
   let sessionId = "";

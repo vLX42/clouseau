@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { AgentEvent } from "./types";
+import type { DemoReason, Recording } from "./eventBus";
 
 export type ChatMsg = {
   kind: "user" | "assistant" | "tool" | "error" | "status";
@@ -91,15 +92,26 @@ export default function Chat({
   onNewSession,
   running,
   demoMode,
-  demoPrompt,
+  demoReason,
+  probing,
+  recordings,
+  selected,
+  onSelect,
 }: {
   events: AgentEvent[];
   onSubmit: (prompt: string) => void;
   onNewSession: () => void;
   running: boolean;
   demoMode?: boolean;
-  demoPrompt?: string | null;
+  demoReason?: DemoReason;
+  probing?: boolean;
+  recordings?: Recording[];
+  selected?: string;
+  onSelect?: (id: string) => void;
 }) {
+  const recs = recordings ?? [];
+  const current = recs.find((r) => r.id === selected) ?? recs[0];
+  const demoPrompt = current?.prompt ?? null;
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const msgs = eventsToChat(events);
@@ -139,9 +151,9 @@ export default function Chat({
 
   const submit = () => {
     const raw = inputRef.current?.value.trim();
-    // In demo mode the recording is fixed — ignore whatever's in the box and
-    // replay the captured prompt so the wall fills in with real events.
-    const v = demoMode ? demoPrompt || raw : raw;
+    // In demo mode the recording is what plays — ignore whatever's in the box
+    // and pass the captured prompt so the chat shows what was asked.
+    const v = demoMode ? demoPrompt || raw || "replay" : raw;
     if (!v || running) return;
     onSubmit(v);
     if (inputRef.current) inputRef.current.value = "";
@@ -164,6 +176,13 @@ export default function Chat({
           CLOUSEAU · chat
           {demoMode && (
             <span
+              title={
+                demoReason === "no-key"
+                  ? "server has no OPENAI_API_KEY: replay only"
+                  : demoReason === "no-server"
+                  ? "no harness reachable: replay only"
+                  : "replaying recorded sessions"
+              }
               style={{
                 marginLeft: 6,
                 padding: "1px 5px",
@@ -173,8 +192,17 @@ export default function Chat({
                 letterSpacing: 1.4,
               }}
             >
-              DEMO
+              REPLAY
             </span>
+          )}
+          {!demoMode && !probing && (
+            <a
+              href="?demo=1"
+              title="API down? switch to replaying the recorded demos"
+              style={{ marginLeft: 8, fontSize: 9, letterSpacing: 1.2, color: "var(--accent)", opacity: 0.7 }}
+            >
+              📼 offline
+            </a>
           )}
         </span>
         <button
@@ -210,8 +238,36 @@ export default function Chat({
                 marginBottom: 8,
               }}
             >
-              this is a recorded session — press <strong>play</strong> below to
-              replay the real events from disk. no tokens, no API key.
+              {demoReason === "no-key"
+                ? "this harness has no API key, so you get the recordings: real sessions, replayed from disk. no tokens spent."
+                : demoReason === "no-server"
+                ? "no harness is running here, so you get the recordings: real sessions, replayed from disk. no tokens spent."
+                : "recorded sessions, replayed from disk with the original timing. no tokens, no API key."}{" "}
+              pick one, press <strong>play</strong>.
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4, marginBottom: 8 }}>
+              {recs.map((r) => {
+                const on = r.id === current?.id;
+                return (
+                  <button
+                    key={r.id}
+                    onClick={() => onSelect?.(r.id)}
+                    disabled={running}
+                    style={{
+                      textAlign: "left",
+                      background: on ? "var(--accent)" : "transparent",
+                      color: on ? "var(--paper)" : "var(--accent)",
+                      border: "1px solid var(--accent)",
+                      fontSize: 10,
+                      letterSpacing: 1.1,
+                      padding: "4px 8px",
+                      cursor: running ? "default" : "pointer",
+                    }}
+                  >
+                    📼 {r.label}
+                  </button>
+                );
+              })}
             </div>
             {demoPrompt && (
               <div

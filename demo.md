@@ -30,9 +30,14 @@ pnpm dev                        # harness on :3737, wall on :5173
   wall is empty and `tmp/` is wiped.
 - Have the Q&A ammunition from `TALK.md` in your head: caching, the leak
   numbers, the opencode line.
-- Fallback for every demo: `http://localhost:5173/?demo=1` replays
-  `frontend/public/demo.jsonl` (a real captured run) with no API calls. Keep
-  that tab open in the background.
+- **If the API is down:** click the small **📼 offline** link in the chat
+  header (or open `http://localhost:5173/?demo=1`). The chat turns into a
+  menu of recordings: demo 1, demo 2 and a longer full-case run, all real
+  captured sessions replayed with their original timing. Pick one, press
+  PLAY, point at cards exactly as you would live. Keep that tab open in the
+  background from the start.
+- The same replay-only mode is what the public deploy runs (no harness, no
+  key), so `github.com/vLX42/clouseau` visitors can play without your key.
 - Between the two demos: press **new session** in the chat header. It clears
   the wall and, since `/reset` is proxied in dev, the server-side session too.
 - No env changes during the talk. Defaults all the way.

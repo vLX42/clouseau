@@ -1,0 +1,5 @@
+[
+  { "id": "1-todo", "label": "demo 1 · write TODO.md and verify it", "file": "/demos/1-todo.jsonl" },
+  { "id": "2-hate-list", "label": "demo 2 · the emoji police", "file": "/demos/2-hate-list.jsonl" },
+  { "id": "3-full-case", "label": "the full case · skill, subagent, guards", "file": "/demos/3-full-case.jsonl" }
+]

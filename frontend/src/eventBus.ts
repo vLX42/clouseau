@@ -2,25 +2,70 @@ import type { AgentEvent } from "./types";
 
 type Handler = (e: AgentEvent) => void;
 
-// Demo mode: replay a real captured session from /demo.jsonl with the
+// Demo mode: replay a real captured session from /demos/*.jsonl with the
 // original inter-event timing (capped so the audience isn't waiting on
-// 30-second LLM stalls). Set VITE_DEMO_MODE=1 at build time, OR append
-// ?demo=1 to the URL to flip into replay without rebuilding.
+// 30-second LLM stalls).
+//
+// How the app decides between live and replay:
+//   ?demo=1            force replay (the "API is down" button in the talk)
+//   ?demo=0            force live
+//   VITE_DEMO_MODE=1   build-time default for static deploys
+//   otherwise          probe GET /health. No server, or a server without an
+//                      OPENAI_API_KEY, means replay-only. That is what a
+//                      public deploy runs on: nobody can spend your tokens.
+export type Mode = "live" | "demo";
+export type DemoReason = "forced" | "build" | "no-server" | "no-key" | null;
+
+function urlDemoFlag(): "1" | "0" | null {
+  if (typeof window === "undefined") return null;
+  const v = new URL(window.location.href).searchParams.get("demo");
+  if (v === "1" || v === "true") return "1";
+  if (v === "0") return "0";
+  return null;
+}
+
+// Synchronous best guess, used before the health probe resolves and by
+// resetSession(). Stays true for forced/build demo; the probe may flip the
+// app into demo later.
 export function isDemoMode(): boolean {
-  if (typeof window === "undefined") return false;
-  const fromUrl = new URL(window.location.href).searchParams.get("demo");
-  if (fromUrl === "1" || fromUrl === "true") return true;
-  if (fromUrl === "0") return false;
+  const f = urlDemoFlag();
+  if (f === "1") return true;
+  if (f === "0") return false;
   // @ts-ignore — vite injects this
   return import.meta.env?.VITE_DEMO_MODE === "1";
 }
 
+export async function detectMode(): Promise<{ mode: Mode; reason: DemoReason }> {
+  const f = urlDemoFlag();
+  if (f === "1") return { mode: "demo", reason: "forced" };
+  if (f !== "0" && isDemoMode()) return { mode: "demo", reason: "build" };
+  try {
+    const ctl = new AbortController();
+    const t = setTimeout(() => ctl.abort(), 2500);
+    const res = await fetch("/health", { cache: "no-cache", signal: ctl.signal });
+    clearTimeout(t);
+    if (!res.ok) return { mode: "demo", reason: "no-server" };
+    // A static host with an SPA fallback answers /health with index.html.
+    if (!(res.headers.get("content-type") || "").includes("json")) {
+      return { mode: "demo", reason: "no-server" };
+    }
+    const j = (await res.json()) as { ok?: boolean; apiKey?: boolean };
+    if (!j.ok) return { mode: "demo", reason: "no-server" };
+    if (j.apiKey === false) return { mode: "demo", reason: "no-key" };
+    return { mode: "live", reason: null };
+  } catch {
+    return { mode: "demo", reason: "no-server" };
+  }
+}
+
+export type Recording = { id: string; label: string; file: string; prompt?: string };
+
 const MIN_GAP_MS = 60;
 const MAX_GAP_MS = 1100;
 
-async function loadRecording(): Promise<AgentEvent[]> {
-  const res = await fetch("/demo.jsonl", { cache: "no-cache" });
-  if (!res.ok) throw new Error(`demo recording missing: HTTP ${res.status}`);
+async function loadJsonl(file: string): Promise<AgentEvent[]> {
+  const res = await fetch(file, { cache: "no-cache" });
+  if (!res.ok) throw new Error(`recording missing: ${file} (HTTP ${res.status})`);
   const text = await res.text();
   return text
     .split("\n")
@@ -28,16 +73,23 @@ async function loadRecording(): Promise<AgentEvent[]> {
     .map((l) => JSON.parse(l) as AgentEvent);
 }
 
-// Pull the first user_message text out of the recording so the chat panel
-// can show what was actually asked.
-export async function loadDemoPrompt(): Promise<string | null> {
-  try {
-    const evs = await loadRecording();
-    const u = evs.find((e) => e.type === "user_message");
-    return (u?.payload?.text as string) ?? null;
-  } catch {
-    return null;
-  }
+// The manifest lists the recordings; each one's first user_message is
+// pulled out so the chat panel can show what was actually asked.
+export async function loadRecordings(): Promise<Recording[]> {
+  const res = await fetch("/demos/index.json", { cache: "no-cache" });
+  if (!res.ok) throw new Error(`demos/index.json missing: HTTP ${res.status}`);
+  const list = (await res.json()) as Recording[];
+  return Promise.all(
+    list.map(async (r) => {
+      try {
+        const evs = await loadJsonl(r.file);
+        const u = evs.find((e) => e.type === "user_message");
+        return { ...r, prompt: (u?.payload?.text as string) ?? undefined };
+      } catch {
+        return r;
+      }
+    }),
+  );
 }
 
 async function sleep(ms: number): Promise<void> {
@@ -45,13 +97,14 @@ async function sleep(ms: number): Promise<void> {
 }
 
 async function replayRecording(
+  file: string,
   onEvent: Handler,
   onDone: () => void,
   onError: (m: string) => void,
 ) {
   let events: AgentEvent[];
   try {
-    events = await loadRecording();
+    events = await loadJsonl(file);
   } catch (err: any) {
     onError(err?.message || "failed to load demo recording");
     return;
@@ -90,9 +143,10 @@ export async function runPrompt(
   onEvent: Handler,
   onDone: () => void,
   onError: (m: string) => void,
+  replayFile?: string,
 ) {
-  if (isDemoMode()) {
-    await replayRecording(onEvent, onDone, onError);
+  if (replayFile) {
+    await replayRecording(replayFile, onEvent, onDone, onError);
     return;
   }
 

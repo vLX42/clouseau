@@ -2,7 +2,8 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import Chat from "./Chat";
 import Wall from "./Wall";
 import Loading, { hasSeenIntro } from "./Loading";
-import { runPrompt, resetSession, isDemoMode, loadDemoPrompt } from "./eventBus";
+import { runPrompt, resetSession, detectMode, loadRecordings } from "./eventBus";
+import type { DemoReason, Recording } from "./eventBus";
 import { place } from "./physics";
 import type { AgentEvent, Placed } from "./types";
 
@@ -43,16 +44,36 @@ export default function App() {
   const [running, setRunning] = useState(false);
   const [autoFollow, setAutoFollow] = useState(true);
   const [showIntro, setShowIntro] = useState(() => !hasSeenIntro());
-  const demoMode = isDemoMode();
-  const [demoPrompt, setDemoPrompt] = useState<string | null>(null);
+  // "live" talks to the harness; "demo" replays recordings. Decided by
+  // detectMode(): URL flag, build flag, or a /health probe (no server or no
+  // OPENAI_API_KEY means replay-only, which is what a public deploy runs).
+  const [mode, setMode] = useState<"probing" | "live" | "demo">("probing");
+  const [demoReason, setDemoReason] = useState<DemoReason>(null);
+  const [recordings, setRecordings] = useState<Recording[]>([]);
+  const [selected, setSelected] = useState<string>("");
+  const demoMode = mode === "demo";
   const sessionIdRef = useRef<string>(initialSessionId());
 
-  // Demo mode: peek at the recording so the chat panel can show what was asked.
+  useEffect(() => {
+    let cancelled = false;
+    detectMode().then(({ mode: m, reason }) => {
+      if (cancelled) return;
+      setMode(m);
+      setDemoReason(reason);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Demo mode: load the manifest so the chat panel can offer the recordings.
   useEffect(() => {
     if (!demoMode) return;
     let cancelled = false;
-    loadDemoPrompt().then((p) => {
-      if (!cancelled) setDemoPrompt(p);
+    loadRecordings().then((list) => {
+      if (cancelled) return;
+      setRecordings(list);
+      setSelected((cur) => cur || list[0]?.id || "");
     });
     return () => {
       cancelled = true;
@@ -82,19 +103,25 @@ export default function App() {
     });
   }, [events]);
 
-  const onPrompt = useCallback((prompt: string) => {
-    setRunning(true);
-    runPrompt(
-      prompt,
-      sessionIdRef.current,
-      (ev) => setEvents((es) => [...es, ev]),
-      () => setRunning(false),
-      (msg) => {
-        console.error(msg);
-        setRunning(false);
-      },
-    );
-  }, []);
+  const onPrompt = useCallback(
+    (prompt: string) => {
+      const rec = demoMode ? recordings.find((r) => r.id === selected) : undefined;
+      if (demoMode && !rec) return;
+      setRunning(true);
+      runPrompt(
+        prompt,
+        sessionIdRef.current,
+        (ev) => setEvents((es) => [...es, ev]),
+        () => setRunning(false),
+        (msg) => {
+          console.error(msg);
+          setRunning(false);
+        },
+        rec?.file,
+      );
+    },
+    [demoMode, recordings, selected],
+  );
 
   const onResetSession = useCallback(() => {
     if (running) return;
@@ -131,7 +158,11 @@ export default function App() {
             onNewSession={onResetSession}
             running={running}
             demoMode={demoMode}
-            demoPrompt={demoPrompt}
+            demoReason={demoReason}
+            probing={mode === "probing"}
+            recordings={recordings}
+            selected={selected}
+            onSelect={setSelected}
           />
         </div>
         <Wall

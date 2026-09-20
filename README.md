@@ -49,7 +49,18 @@ pnpm --filter clouseau-server capture "prompt" [out.jsonl]    # record a run for
 cd video && npm install && npm run studio                      # Remotion studio
 ```
 
-Replay a recorded run without spending tokens: add `?demo=1` to the frontend URL, or `pnpm --filter clouseau-frontend build:demo` (this is what `netlify.toml` / `vercel.json` deploy). `frontend/public/demo.jsonl` is a real captured run.
+### Replay mode (no tokens, no key)
+
+The wall decides on load whether it is live or replaying:
+
+- `?demo=1` on the URL forces replay (the "API is down" escape hatch during the talk; there is also a small **📼 offline** link in the chat header).
+- No harness reachable, or a harness whose `/health` reports `apiKey: false`, means replay only. So a public deploy of just the frontend, or a server started without `OPENAI_API_KEY`, lets people play with the recordings and nobody can spend your tokens.
+
+Recordings live in `frontend/public/demos/` (`index.json` is the menu): the two live-demo prompts from the talk and one longer "full case" run. Record a new one with `pnpm --filter clouseau-server capture "prompt" frontend/public/demos/<name>.jsonl` and add it to `index.json`.
+
+### Deploying a play-with-it version
+
+`netlify.toml` and `vercel.json` build the frontend only (`npm run build:demo`, publish `frontend/dist`). `build:demo` bakes replay mode in so the page does not wait on the health probe; a plain `build` would also end up in replay mode once the probe finds no harness. Nothing else to configure.
 
 ### Env knobs
 

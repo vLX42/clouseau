@@ -2,12 +2,12 @@
 
 Everything in this folder exists for one conference talk. Peter presents
 **"Does Your Agent Bite?"** (subtitle: *your AI agent is a `while` loop in a
-ridiculous disguise*) at the T&I conference **Tech Moves Us on 9 October 2026**,
-30 to 40 minutes. The folder is still named `columbo` on disk; the project was
+ridiculous disguise*) at the T&I conference **Tech Moves Us on Friday 6 November 2026** (moved from 9 October),
+30 to 40 minutes, **online through Microsoft Teams** (screen share, no live room). The folder is still named `columbo` on disk; the project was
 renamed to the Inspector Clouseau theme in August 2026 and nothing should say
 Columbo any more (except `video/out/columbo.mp4`, an old render).
 
-Not a git repo. There is no remote and nothing to push.
+Git repo, remote `github.com/vLX42/clouseau`.
 
 ## The one-sentence thesis
 

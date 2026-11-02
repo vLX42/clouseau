@@ -1,13 +1,13 @@
 # Demo runbook
 
-Two live demos on the Clouseau wall, four reconstructions that are animated
+One live demo on the Clouseau wall, four reconstructions that are animated
 inside the slides (arrow key steps them, like fragments), and an appendix of
 extra live prompts if the room wants more.
 
 The wall is the crime scene. Point at cards as they land. Never talk over a
 card that is still flying in.
 
-## Pre-flight (do this before walking on stage)
+## Pre-flight (do this before you start sharing)
 
 ```sh
 cp .env.example .env            # if not done; put the real OPENAI_API_KEY in
@@ -25,6 +25,13 @@ pnpm dev                        # harness on :3737, wall on :5173
   scrolls; the wall stays put. Scroll outside the body to zoom again.
 - Open `SLIDES.html` in a second window. Fragments and transitions only work
   in the HTML deck.
+- **It's online, through Teams.** Share your **screen**, not a single
+  window, so switching between the deck and the wall shows up. Tick
+  **Include sound** when you start sharing, or the dog video is silent.
+- Press **P** in the deck for presenter view (notes, next slide, timer) and
+  keep that window on the screen you are *not* sharing.
+- Nobody can be pointed at and nobody laughs out loud: use the mouse to circle
+  cards, ask for the raise hand button or the chat, and don't wait for laughs.
 - Run live demo 1 once for real before the talk, so you know the key works
   and the wall layout is what you expect. Then press **new session** so the
   wall is empty and `tmp/` is wiped.
@@ -38,13 +45,13 @@ pnpm dev                        # harness on :3737, wall on :5173
   background from the start.
 - The same replay-only mode is what the public deploy runs (no harness, no
   key), so `github.com/vLX42/clouseau` visitors can play without your key.
-- Between the two demos: press **new session** in the chat header. It clears
+- Before any extra live prompt: press **new session** in the chat header. It clears
   the wall and, since `/reset` is proxied in dev, the server-side session too.
 - No env changes during the talk. Defaults all the way.
 
 ## Live demo 1 · The tool call, caught in the act
 
-**Slide:** "Live demo 1 of 2 · The tool call, caught in the act" (end of Case 003,
+**Slide:** "Live demo · The tool call, caught in the act" (end of Case 003,
 right after "The model cannot write the file. It can only ask.").
 
 **Setup:** empty wall, defaults in `.env`.
@@ -140,9 +147,10 @@ sentence in the main thread. Compaction by construction."*
 → 3: stamp `write_file ∉ sub-1.tools[]`. *"Not asked nicely. Not in the
 menu. No jailbreak."*
 
-## Live demo 2 · The emoji police make an arrest
+## Optional · The emoji police, live
 
-**Slide:** "Live demo 2 of 2 · The emoji police make an arrest" (Case 010).
+Not in the main talk any more: it is one static slide at the end of Case 009 (skill
+demand + file on disk). Run this only if there is time or the room asks.
 
 This one also carries the skill envelope, the `write_file` permission stamp
 and the evidence locker, so everything the animated walls showed lands once
@@ -195,11 +203,11 @@ All of these work on the wall with the default `.env` unless noted.
   the wall, ◀ SUBAGENT stamp when it returns. *"Spawn a subagent and ask it
   to write a file"* shows the tool restriction.
 
-- **Doom loop** (Case 011): if you want it live, *"Call read_file on
+- **Doom loop** (Case 010): if you want it live, *"Call read_file on
   package.json exactly 5 separate times, one call per turn, never
   batching."* Third identical call → 🌀 **DOOM LOOP** stamp, the harness
   answers instead of the tool.
-- **Wrap it up** (Case 011): needs `MAX_TURNS=4` and a restart. Same prompt
+- **Wrap it up** (Case 010): needs `MAX_TURNS=4` and a restart. Same prompt
   as the doom loop; on the final turn the 📢 **WRAP IT UP** stamp lands and
   the injected user message is visible in the next REQUEST SENT.
 - **Subagent tool restriction**: *"Spawn a subagent and ask it to write a
@@ -213,8 +221,7 @@ All of these work on the wall with the default `.env` unless noted.
 | Animated A (terminal) | 1 |
 | Live demo 1 (tool call) | 3 |
 | Animated B, C, D | 1.5 each |
-| Live demo 2 (emoji police) | 2 |
-| **Total** | **~10.5** |
+| **Total** | **~8.5** |
 
 That leaves about 25 minutes for the slides. If you are running long, skip
-animated D; the subagent slides carry it.
+the hype-titles table. Animated C and D now carry the permission and subagent points on their own, so keep them.

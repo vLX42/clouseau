@@ -136,6 +136,18 @@ Click on a REQUEST SENT card and show the JSON. *That* is the context
 window for that turn. It has a token budget. When it gets close, the
 harness panics.
 
+**"But I've seen it think?"**
+Claude Code, Copilot and Codex sometimes show a "Thinking…" block ("the
+user said *the toggle*, there are two, probably the header one…").
+That reasoning happens **inside the model**: extra hidden output tokens
+written before the answer, in the same single request. No extra loop.
+The harness only turns the knob: on/off, how much (`reasoning_effort`,
+token budget), show it or hide it, send it back next turn or drop it.
+What the UI shows is often a summary. You pay for it as output tokens
+either way. Not in the demo on purpose: gpt-4o-mini doesn't reason and
+it would only add noise to the wall; the loop is identical. Line: *the
+witness thinks, the detective decides how long.*
+
 **"What happens when the context fills up?"**
 Lower `COMPACTION_THRESHOLD` to ~1500 and re-run. When the compaction
 event fires, all the prior cards dim and a thick-bordered COMPACTED card
@@ -171,7 +183,7 @@ Point out:
 Draw the funnel on the board:
 
 ```
-   global rules (~/.codex/AGENTS.md, ~/.claude/CLAUDE.md)
+   global rules (~/.copilot/copilot-instructions.md, ~/.claude/CLAUDE.md)
               │
    project rules (./AGENTS.md, ./CLAUDE.md)
               │
@@ -339,6 +351,21 @@ Then two comic beats before closing arguments:
   the room is coincidental. Read the notes fast, let the room laugh, do
   not linger; nobody should feel targeted.
 
+Closing arguments, the "what have we learned" run (four slides, after
+"the remaining work belongs to us"):
+
+- **The context is the agent.** Everything it knows is in the array you
+  sent. Sticky: your context is its AGI.
+- **The usual suspects** when it does something stupid: it hallucinated,
+  the context was unclear, the reasoning went haywire, or the harness gave
+  it too much power and it found a way to please you that it should never
+  have had. The first three are the witness; the last one is on the
+  harness writer.
+- **It is a language model.** It predicts the outcome you most likely
+  want to see, no matter how silly that looks to you.
+- **Once it has decided, it moves heaven and earth.** So you decide how
+  much earth it can reach: `tools[]`, permissions, guards.
+
 ---
 
 ## Live-demo cheat sheet
@@ -437,9 +464,9 @@ Pick one and stick with it. Mixing metaphors is how you lose the room.
   line 1088 on `dev` at commit `ebb7b76` (checked 20 Sep 2026). Use the
   permalink `github.com/anomalyco/opencode/blob/ebb7b76/packages/opencode/src/session/prompt.ts#L1088`
   in case the line drifts before the talk.
-- **Claude Code leak numbers.** v2.1.88, 30 Mar 2026, `.map` files in the
+- **Claude Code leak numbers.** v2.1.88, 31 Mar 2026, `.map` files in the
   npm tarball. 512,000 lines across 1,906 TypeScript files;
-  `QueryEngine.ts` 46,000 lines. Pulled the same day.
+  the agent loop is one `while (true)` in `src/query.ts`, ~1,400 lines (the viral "QueryEngine.ts 46,000 lines" is bytes, the file is 1,295 lines). Pulled the same day.
 - **Line counts.** Clouseau's server is ~1,100 lines: `agent.ts` 666,
   `tools.ts` 341, `compaction.ts` 77. The loop itself is 12 lines. Use
   "~1,100" everywhere, never "200" or "600".
@@ -486,6 +513,8 @@ Pick one and stick with it. Mixing metaphors is how you lose the room.
 > function — reads the file, writes the file, runs the bash command —
 > and then POSTs the result back as part of the next JSON request. This
 > loop continues until the model stops asking for tools. Everything else
-> — memory, skills, autonomy, "thinking" — is the harness choosing what
-> to put in the JSON. The model never does anything by itself. The
+> — memory, skills, autonomy — is the harness choosing what to put in the
+> JSON. (Reasoning is the one exception: the model does that itself,
+> inside a single call. The harness only sets how much and whether to
+> show or keep it.) The model never does anything by itself. The
 > harness does all of it.

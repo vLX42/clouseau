@@ -174,6 +174,18 @@ footer: 'Clouseau · agent visualiser · that is not my model'
 
 </div>
 
+<!--
+Good morning.
+
+My name is Peter, and today I will be investigating a crime.
+
+[Pause.]
+
+Nobody has reported this crime.
+
+That is what makes it so sinister.
+-->
+
 ---
 
 <!-- _class: big -->
@@ -182,11 +194,35 @@ footer: 'Clouseau · agent visualiser · that is not my model'
 
 <span class="sticky">that is all the French I will attempt</span>
 
+<!--
+[Say Bonjour with a terrible accent, then look slightly ashamed.]
+
+That was the French part of the talk.
+
+It went about as well as expected.
+
+From now on it's English.
+
+Badly accented, but English.
+-->
+
 ---
 
 <!-- _class: big -->
 
 # I am here to ruin some magic.
+
+<!--
+I'm sorry.
+
+I really am.
+
+Some of you came here believing in magic, and in about thirty minutes you will believe in a while loop.
+
+There is no refund desk.
+
+I checked.
+-->
 
 ---
 
@@ -197,6 +233,50 @@ It edits five files, runs the tests,
 and tells you it **shipped**.
 
 It feels *alive*.
+
+<!--
+Quick question, and please use the raise hand button in Teams.
+
+Has AI changed more than fifty files for you this week?
+
+[Wait for the little hands to pop up.]
+
+Now keep your hand up only if you read and understood all of them.
+
+[If some hands go down]
+
+Thank you.
+
+I can relate to that.
+
+So I'm not the only one who can't keep up.
+
+[If nobody lowers their hand]
+
+Ah.
+
+I'm surrounded by superhumans.
+
+Then type in the chat what was in the diff of the last file it changed.
+
+[Wait a few seconds.]
+
+No?
+
+The one before that, then.
+
+Line forty-two.
+
+Anyone?
+
+What did it rename, and why?
+
+[If the chat stays silent] I'll take the silence as a confession.
+
+But it does feel alive, doesn't it?
+
+Like there's somebody in there.
+-->
 
 ---
 
@@ -216,6 +296,20 @@ It feels *alive*.
 * Not *magic*.
 * Five letters. Lowercase. You have typed it a thousand times.
 
+<!--
+[Click the bullets slowly, like a quiz show host who already knows nobody is going to win.]
+
+Not intelligence.
+
+Not agency.
+
+Not magic.
+
+Five letters, lowercase.
+
+You've typed it a thousand times and never once felt anything.
+-->
+
 ---
 
 <!-- _class: big -->
@@ -223,6 +317,20 @@ It feels *alive*.
 # `fetch`
 
 <span class="sticky">spoilers, but that's why you're here</span>
+
+<!--
+Fetch.
+
+That's it.
+
+That's the reveal.
+
+[Long pause, as if waiting for applause that will not come.]
+
+Yes.
+
+The most hyped technology of the decade runs on the same function you use to load a JSON file of cat pictures.
+-->
 
 ---
 
@@ -238,31 +346,36 @@ It feels *alive*.
 
 </div>
 
----
+<!--
+So we'll do this properly, like a detective.
 
-## Exhibit 1
+Three exhibits, then we solve it.
 
-The model is a **stateless text-prediction endpoint**.
-
-JSON in. JSON out. Nothing else. Ever.
-
----
-
-## Exhibit 2
-
-The harness is **a program you could write in an afternoon**.
-
-I did. It's called Clouseau. ~1,100 lines, and the loop is 12 of them.
+Unlike a real detective, I already know who did it, which saves a lot of time.
+-->
 
 ---
 
-## Exhibit 3
+## The three exhibits
 
-Everything that feels like *intelligence*
-is the harness choosing **what JSON to send next**.
+1. The model is a **stateless text-prediction endpoint**. JSON in, JSON out.
+2. The harness is **a program you could write in an afternoon**. I did: Clouseau, ~1,100 lines. The loop fits in 12.
+3. Everything that feels like *intelligence* is the harness choosing **what JSON to send next**.
 
-> Remember these three, and you could build your own
-> Codex by Wednesday. (We won't. But you could.)
+> Remember these three and you could build your own Codex by Wednesday. (We won't. But you could.)
+
+<!--
+[Don't read the slide out, say it short.]
+
+1. The model is a text predictor with no memory.
+2. The harness is a normal program, and I wrote one in an afternoon.
+   Well, several afternoons and one evening I don't talk about.
+3. Everything that looks clever is the harness deciding what to send next.
+
+[The Codex by Wednesday line on the slide is a joke, wink at it.]
+
+Please don't build Codex by Wednesday.
+-->
 
 ---
 
@@ -277,6 +390,14 @@ is the harness choosing **what JSON to send next**.
 # The Disappearing Magic
 
 </div>
+
+<!--
+Case one.
+
+The disappearing magic.
+
+Watch closely, because this is the last time you'll see the magic before I take it apart and put it in little labelled bags.
+-->
 
 ---
 
@@ -299,11 +420,27 @@ is the harness choosing **what JSON to send next**.
 
 <span class="sticky" style="position:absolute; right:60px; bottom:50px;">files appeared. terminal ran. smile landed.</span>
 
+<!--
+[Step through it.]
+
+This is what we all see every day.
+
+You type one sentence, files appear, the build passes, and it says Done with the quiet confidence of a man who has never been wrong in his life.
+-->
+
 ---
 
 <!-- _class: big -->
 
 # What just happened?
+
+<!--
+So.
+
+What just happened?
+
+[Look straight into the camera, as if you genuinely expect someone to unmute and confess.]
+-->
 
 ---
 
@@ -311,17 +448,31 @@ Everyone answers the same thing:
 
 ## "The AI did it."
 
+<!--
+And everybody says the same thing.
+
+The AI did it.
+
+It's the butler of our generation.
+-->
+
 ---
 
 <!-- _class: big -->
 
 # We have arrested the wrong suspect.
 
----
+<!--
+We have arrested the wrong suspect.
 
-<!-- _class: big -->
+The model has been sitting in the interrogation room for two years and it has not touched a single file.
 
-# The model doesn't have a filesystem.
+It has an alibi.
+
+A very good alibi.
+
+It doesn't have hands.
+-->
 
 ---
 
@@ -333,6 +484,14 @@ Everyone answers the same thing:
 
 The detective nobody credits.
 
+<!--
+The model sent some JSON.
+
+The harness ran your commands.
+
+The harness does all the legwork, and the model walks off with the credit, the press coverage and the trillion dollar valuation.
+-->
+
 ---
 
 ## Meet the detective
@@ -341,9 +500,19 @@ The detective nobody credits.
 
 **Clouseau**: small, throwaway, hand-rolled agent.
 
-- Backend: ~1,100 lines of TS, **zero SDK**, raw `fetch`.
+- Harness core: ~1,100 lines of TS, **zero SDK**, raw `fetch`.
 - Frontend: a corkboard. Every internal event gets pinned.
 - Red string, so you can *see* causality.
+
+<!--
+This is Clouseau, my little agent.
+
+About eleven hundred lines of TypeScript, no SDK, just fetch.
+
+And a corkboard, because every proper investigation needs a corkboard with red string.
+
+Otherwise it's just accounting.
+-->
 
 ---
 
@@ -359,6 +528,14 @@ The detective nobody credits.
 
 </div>
 
+<!--
+Case two.
+
+It's a while loop.
+
+I'd like to apologise in advance to everyone here with a slide deck called Agentic AI Architecture.
+-->
+
 ---
 
 ## Exhibit A
@@ -366,46 +543,56 @@ The detective nobody credits.
 ```ts
 let messages = [systemPrompt, userPrompt];
 while (true) {
-  const res = await fetch(API, { body: { messages, tools } });
-  const msg = res.choices[0].message;
-  messages.push(msg);
-  if (msg.finish_reason === "stop") break;
-  for (const call of msg.tool_calls) {
-    const result = await runTool(call.name, call.args);
-    messages.push({ role: "tool", content: result });
+  const res = await fetch(API, { method: "POST", body: JSON.stringify({ model, messages, tools }) });
+  const choice = (await res.json()).choices[0];
+  messages.push(choice.message);
+  if (choice.finish_reason !== "tool_calls") break;
+  for (const call of choice.message.tool_calls) {
+    const result = await runTool(call.function.name, call.function.arguments);
+    messages.push({ role: "tool", tool_call_id: call.id, content: result });
   }
 }
 ```
 
+<!--
+Here it is.
+
+The whole agent.
+
+[Pause and let them read it.]
+
+Take a good look.
+
+Some companies have raised a great deal of money on this.
+
+You could print it on a tea towel.
+-->
+
 ---
 
-Let's read it like evidence. Line by line.
+## Read it like evidence
 
 ```ts
 let messages = [systemPrompt, userPrompt];
-```
-
-The entire "conversation" is… an array.
-
----
-
-```ts
 while (true) {
-```
-
-Look at this line for ten full seconds.
-
-This is the agentic AI revolution.
-
----
-
-```ts
 const res = await fetch(API, { body: { messages, tools } });
+if (choice.finish_reason !== "tool_calls") break;
 ```
 
-One HTTPS POST. No SDK. No secret handshake.
+- `messages`: the whole "conversation" is… an array.
+- `while (true)`: this is the agentic AI revolution.
+- `fetch`: one HTTPS POST, no SDK. `tools` is a **menu** the model orders from.
+- `break`: when it stops asking for tools, the loop ends. That's the exit strategy.
 
-The `tools` field is a **menu** we let the model order from.
+<!--
+Let's read it like evidence.
+
+1. Messages is the whole conversation, and it's an array.
+   Not a brain. An array.
+2. While true is the agentic revolution.
+3. Fetch is one POST, and tools is the menu the model gets to order from.
+4. And break is the exit strategy, which is more than most of us have at work.
+-->
 
 ---
 
@@ -425,32 +612,84 @@ That `description` is the **only documentation the model ever reads**.
 
 <span class="sticky">tool design is prompt engineering with a schema</span>
 
----
+<!--
+One item on the menu, straight from my code.
 
-```ts
-if (msg.finish_reason === "stop") break;
-```
+That description is the only documentation the model ever reads.
 
-When the model stops asking for tools…
-
-the loop ends. That's the whole exit strategy.
+Write a bad one and the model uses the tool badly, it's your fault, and it will be very polite about it.
+-->
 
 ---
 
 ```ts
-const result = await runTool(call.name, call.args);
-messages.push({ role: "tool", content: result });
+const result = await runTool(call.function.name, call.function.arguments);
+messages.push({ role: "tool", tool_call_id: call.id, content: result });
 ```
 
 The **harness** runs the function.
 
 The result goes back in the array. Loop again.
 
+<!--
+Then the harness runs the function.
+
+Not the model.
+
+The harness.
+
+The result goes back into the array and round we go again.
+
+It's not thinking.
+
+It's a hamster wheel with an excellent vocabulary.
+-->
+
+---
+
+## Two clues at once? Or one needs the other?
+
+```json
+"tool_calls": [ read_file("App.tsx"), read_file("theme.css") ]
+```
+
+**Independent:** the `for` runs them **all**, *then* one new request.
+
+**Dependent:** the model can't wait mid-sentence. It ends its turn, the harness runs the tool, **the loop goes around**.
+
+<span class="sticky">one question per lap</span>
+
+<!--
+Someone always asks this.
+
+What if it wants two things?
+
+If they're independent, it asks for both at once, the for loop runs them, then one new request.
+
+If one needs the other, it can't wait mid-sentence.
+
+It ends its turn, gets the answer, asks again next lap.
+
+One question per lap.
+
+Like a very slow pub quiz.
+-->
+
 ---
 
 <!-- _class: big -->
 
 # That is the entire agent.
+
+<!--
+That is the entire agent.
+
+[Say nothing for three seconds.]
+
+No, Teams didn't freeze.
+
+That really is the entire agent.
+-->
 
 ---
 
@@ -464,13 +703,19 @@ Theirs has nicer error handling. And a logo.
 
 <span class="sticky">it's ifs all the way down</span>
 
----
+<!--
+Copilot has this loop.
 
-"But mine *streams*."
+Codex has this loop.
 
-Same POST, plus `stream: true`.
+Claude Code, Cursor, the startup that just raised forty million.
 
-Chunks instead of one JSON. The loop is identical.
+Same loop.
+
+Theirs has nicer error handling and a logo.
+
+And probably a foosball table.
+-->
 
 ---
 
@@ -480,17 +725,19 @@ Chunks instead of one JSON. The loop is identical.
 
 **~500,000 lines** of TypeScript, suddenly readable.
 
----
+<!--
+And you don't have to take my word for it.
 
-And **opencode** is open source on purpose.
+In March this year Claude Code accidentally shipped a source map in its npm package.
 
-`packages/opencode/src/session/prompt.ts`, line 1088:
+Half a million lines of TypeScript, suddenly readable by everyone.
 
-```ts
-while (true) {
-```
+And right in the middle of it, a while true.
 
-<span class="sticky">a real production harness. same loop. go read it.</span>
+I felt very validated.
+
+I bought myself a cake.
+-->
 
 ---
 
@@ -506,6 +753,14 @@ while (true) {
 
 </div>
 
+<!--
+Case three.
+
+The tool call.
+
+This is where the model asks to do something, and we discover it has no legs.
+-->
+
 ---
 
 The model's reply can contain this:
@@ -514,9 +769,22 @@ The model's reply can contain this:
 { "role": "assistant",
   "content": null,
   "tool_calls": [{
+    "id": "call_abc", "type": "function",
     "function": { "name": "write_file",
-                  "arguments": "{\"path\":\"App.tsx\"}" } }] }
+                  "arguments": "{\"path\":\"App.tsx\",\"content\":\"...\"}" } }] }
 ```
+
+<!--
+This is what the model actually sends back when it wants a file written.
+
+Notice content is null.
+
+It has nothing to say.
+
+It just wants something done.
+
+Like a cat sitting next to an empty bowl.
+-->
 
 ---
 
@@ -524,6 +792,18 @@ Translation:
 
 > "Dear harness. Kindly run `write_file` for me.
 > I shall wait here. I have no legs."
+
+<!--
+[Read it in the voice of a mildly offended English butler.]
+
+Dear harness.
+
+Kindly run write file for me.
+
+I shall wait here.
+
+I have no legs.
+-->
 
 ---
 
@@ -533,44 +813,37 @@ Translation:
 
 It can only **ask**.
 
+<!--
+The model cannot write the file.
+
+It can only ask.
+
+The most powerful technology in the world, and it's basically filling in a form and handing it to reception.
+-->
+
 ---
 
 What the harness does next:
 
 ```ts
-await fs.writeFile(call.args.path, call.args.content);
-messages.push({ role: "tool", content: "ok" });
+const args = JSON.parse(call.function.arguments);
+await fs.writeFile(args.path, args.content);
+messages.push({ role: "tool", tool_call_id: call.id, content: "ok" });
 ```
 
 The model **proposes**. The harness **disposes**.
 
----
+<!--
+And this is the harness doing the actual work.
 
-And when the tool **fails**?
+Parse the arguments, write the file, push ok back into the array.
 
-```ts
-} catch (err) {
-  output = "ERROR: " + err.message;
-}
-messages.push({ role: "tool", content: output });
-```
+The model proposes, the harness disposes.
 
-The failure is a **string**. The string goes in the array.
-The model reads it and asks for something else.
+Very old saying.
 
-That is the entire "self-healing agent".
-
----
-
-A case file is just a theory.
-
-A real detective **reconstructs the crime**.
-
-Twice today, we leave the slides and watch
-the loop do it **live**, every event pinned to the wall.
-The other times, the wall comes to the slides.
-
-<span class="sticky">the wall is the crime scene</span>
+I've updated it slightly.
+-->
 
 ---
 
@@ -578,7 +851,7 @@ The other times, the wall comes to the slides.
 <!-- _backgroundColor: '#1a1410' -->
 <!-- _color: '#e9e1cd' -->
 
-## <small>Live demo 1 of 2</small> The tool call, caught in the act
+## <small>Live demo</small> The tool call, caught in the act
 
 > "Create a file TODO.md with three sample items as a checkbox list, then verify it exists."
 
@@ -590,6 +863,30 @@ REQUEST SENT (4) → RESPONSE → 🔍 `file_exists` "yes" → REQUEST SENT (6) 
 **Click** the first RESPONSE: `tool_calls[0]` is `write_file`, `content` is null. It **asked**. **Open** the evidence locker: the harness wrote it.
 
 <span class="sticky say">"the model never touched the disk"</span>
+
+<!--
+[Switch to the wall and press demo 1. Make sure Teams is sharing your screen or the browser, not just the slides window, or nobody sees the switch.]
+
+[Circle each card with the mouse as it lands, never talk over a card that is still flying.]
+
+[When the first RESPONSE lands, click it.]
+
+Content is null, there's a tool call.
+
+It asked.
+
+[Open the evidence locker.]
+
+The harness wrote it.
+
+The model never touched the disk.
+
+[If it breaks, say]
+
+This is the part of the live demo where the technology shows its sense of humour.
+
+[Then use the replay.]
+-->
 
 ---
 
@@ -605,29 +902,36 @@ REQUEST SENT (4) → RESPONSE → 🔍 `file_exists` "yes" → REQUEST SENT (6) 
 
 </div>
 
+<!--
+Case four.
+
+The brilliant amnesiac.
+-->
+
 ---
 
 Picture a Nobel laureate in a sealed room.
 
-You slip a script under the door.
-
-He reads it, writes a reply, slides it back.
-
----
+You slip a script under the door. He reads it, writes a reply, slides it back.
 
 The next morning, you do it again.
-
 **He doesn't remember the first conversation.**
 
 A goldfish with a PhD.
 
----
+<!--
+Imagine a Nobel prize winner locked in a room.
 
-So every turn, the harness shoves
-**the entire conversation so far**
-back under the door.
+You slide a script under the door, he writes a lovely reply and slides it back.
 
-Yes. Every time.
+Next morning you do it again, and he has absolutely no idea who you are.
+
+Every single morning.
+
+A goldfish with a PhD.
+
+Brilliant, charming, and not someone you'd leave your house keys with.
+-->
 
 ---
 
@@ -635,7 +939,21 @@ Yes. Every time.
 
 # That's the "context window".
 
+Every turn the harness shoves **the entire conversation so far** back under the door.
+
 The fancy name for *the only thing the model knows*.
+
+<!--
+So every turn the harness pushes the whole conversation back under the door.
+
+Every message, every tool result, all of it, every time.
+
+That's the context window.
+
+Sounds very technical.
+
+It means the pile of paper under the door.
+-->
 
 ---
 
@@ -644,9 +962,117 @@ Remember the token meter in the demo?
 **The IN number only ever grew.**
 
 A token is ~4 characters. You pay for the **whole array, every turn**.
-Ten turns costs roughly ten times the final context.
+Ten turns costs five to ten times the final context. Prompt caching is the discount coupon.
 
 <span class="sticky">ouch. OUCH. ZUT ALORS!</span>
+
+<!--
+Remember the token meter?
+
+The IN number only ever went up.
+
+You pay for the whole array every turn.
+
+Ten turns can cost five to ten times the final size.
+
+Prompt caching helps, it's the discount coupon.
+
+But it's still a coupon.
+
+You're still in the shop.
+-->
+
+---
+
+<!-- _class: lead -->
+<!-- _backgroundImage: url('slides-assets/reasoning.jpg') -->
+<!-- _color: #f4ede0 -->
+
+<div class="plate" style="margin-top: 380px; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">
+
+### CASE Nº 004½
+
+# The Thinking Witness
+
+</div>
+
+<!--
+Case four and a half.
+
+The thinking witness.
+
+Four and a half, because I added it late and refused to renumber everything, like a proper civil servant.
+-->
+
+---
+
+## But wait, I have *seen* it think
+
+<div class="screen" style="min-height:auto;">
+
+<div class="line">$ claude "make the toggle remember the theme"</div>
+<div class="line dim">✻ Thinking…</div>
+<div class="line dim">&nbsp;&nbsp;The user says "the toggle". There is one in Header.tsx</div>
+<div class="line dim">&nbsp;&nbsp;and one in Settings.tsx. Probably the header one, they</div>
+<div class="line dim">&nbsp;&nbsp;just added it. Remember = localStorage? Check App.tsx first.</div>
+<div class="line ed">● Read src/App.tsx</div>
+
+</div>
+
+Claude Code, Copilot, Codex: they all show a bit of this sometimes.
+
+<span class="sticky" style="position:absolute; right:60px; bottom:40px;">so who is doing the thinking?</span>
+
+<!--
+Now someone is going to say, but Peter, I've seen it think.
+
+And yes.
+
+Claude Code and Copilot show you this.
+
+The user said the toggle, which toggle could they mean.
+
+It looks like a little man inside, worrying about you.
+
+So who's doing the thinking?
+-->
+
+---
+
+## Where does the thinking happen?
+
+**Inside the model.** Hidden tokens written *before* the answer,
+in the **same single request**. No extra loop.
+
+| Who | Decides |
+|---|---|
+| **Model** | *how* it reasons (baked into the weights) |
+| **Harness** | the effort dial (`reasoning_effort` / `effort`), show a summary (never the real notes) or hide it, send the (encrypted) notes back next turn if the API allows |
+| **You** | the bill. Thinking tokens are output tokens, seen or not |
+
+<span class="sticky" style="position:absolute; right:60px; bottom:64px;">not in our demo: gpt-4o-mini doesn't reason. same loop.</span>
+
+<!--
+It happens inside the model, in the same request.
+
+Hidden tokens written before the answer.
+
+No extra loop.
+
+The model decides how it reasons.
+
+The harness decides how long it may think and whether you get to see a summary.
+
+You decide nothing, you just pay.
+
+Thinking tokens are billed even when you never see them.
+
+Like a lawyer.
+
+My demo uses gpt-4o-mini, which doesn't reason, so it's not on the wall.
+
+Same loop either way.
+-->
 
 ---
 
@@ -662,6 +1088,12 @@ Ten turns costs roughly ten times the final context.
 
 </div>
 
+<!--
+Case five.
+
+The ticking context.
+-->
+
 ---
 
 The script grows every turn.
@@ -669,6 +1101,14 @@ The script grows every turn.
 **The window it must fit inside does not.**
 
 Sooner or later…
+
+<!--
+The script grows every turn.
+
+The window doesn't.
+
+Sooner or later something has to give, and it's never the thing you'd like.
+-->
 
 ---
 
@@ -679,6 +1119,20 @@ Sooner or later…
 > Do not panic. It is not a bomb.
 > (It is exactly like a bomb.)
 
+<!--
+Context overflow.
+
+Do not panic.
+
+It is not a bomb.
+
+[Pause.]
+
+It is exactly like a bomb.
+
+[Say beumb, Clouseau style, if you dare.]
+-->
+
 ---
 
 ## Compaction, the whole feature
@@ -688,6 +1142,21 @@ Sooner or later…
 3. Replace with `[system, summary, latest_user]`.
 4. Carry on like nothing happened.
 
+<!--
+And the fix.
+
+Compaction.
+
+1. Ask the model to summarise the conversation.
+2. Throw the whole array in the bin.
+3. Replace it with the summary.
+4. Carry on as if nothing happened.
+
+It's the corporate approach to memory.
+
+Write a summary, shred the originals, and hope nobody asks.
+-->
+
 ---
 
 <!-- _class: big -->
@@ -695,6 +1164,18 @@ Sooner or later…
 # There is no Compaction Service™
 
 It's a **prompt**.
+
+<!--
+There is no compaction service.
+
+No microservice, no vector database, no team of forty in Dublin.
+
+It's a prompt.
+
+Summarise this, please.
+
+That's it.
+-->
 
 ---
 <!-- _class: anim -->
@@ -712,12 +1193,29 @@ It's a **prompt**.
 <div class="wc tool" style="left:930px; top:24px; --r:-1deg"><b>🔍 TOOL</b>read_file frontend/…</div>
 <div class="wc" style="left:940px; top:150px; --r:2deg"><b>REQUEST SENT</b>messages: 8</div>
 
+* <div class="wc land" style="left:150px; top:200px; --r:2deg"><b>USER</b>"now compare them"<br/><i>next prompt</i></div>
 * <div class="ticker land" style="top:auto; bottom:14px; right:14px;">IN <span class="hurt">8,120</span> tokens · threshold 8,000 · <span class="hurt">ZUT ALORS</span></div>
 * <div class="wc big compacted land" style="left:400px; top:190px; --r:-3deg"><b>🗜️ COMPACTED</b>"Summarise this conversation. Keep file paths."<br/>→ 212 tokens. Old array: thrown away.</div>
-* <div class="string" style="left:610px; top:250px; width:160px; transform: rotate(18deg);"></div><div class="wc land" style="left:760px; top:280px; --r:1deg"><b>REQUEST SENT</b>messages: <b style="color:#a8201a; display:inline">3</b><br/>[system, summary, user]</div>
+* <div class="string" style="left:610px; top:250px; width:160px; transform: rotate(18deg);"></div><div class="wc land" style="left:760px; top:280px; --r:1deg"><b>REQUEST SENT</b>messages: <b style="color:#a8201a; display:inline">3</b><br/>[system, summary, new user]</div>
 
 <span class="sticky" style="position:absolute; left:20px; bottom:20px; font-size:1em; max-width:400px;">it never knew it forgot, because it never knew it remembered</span>
 </div>
+
+<!--
+[Step the animation.]
+
+Watch the message count climb.
+
+Two, four, six, eight.
+
+Then the next prompt tips it over the threshold, and the harness forgets on purpose.
+
+Everything goes dim, one summary card, and the count drops.
+
+It forgets deliberately.
+
+Which is more than I can say for my photo library.
+-->
 
 ---
 
@@ -734,6 +1232,12 @@ It's a **prompt**.
 
 </div>
 
+<!--
+Case six.
+
+Who is giving the orders?
+-->
+
 ---
 
 Click any REQUEST SENT card. Scroll to `messages[0]`.
@@ -742,14 +1246,45 @@ Click any REQUEST SENT card. Scroll to `messages[0]`.
 
 **One giant string.** The agent's entire personality.
 
+<!--
+[Optional. Switch to the wall, click any REQUEST SENT card and scroll to the very top.]
+
+Message zero.
+
+Role system.
+
+One giant string.
+
+That's the agent's entire personality.
+
+Billions in research, and the personality lives in a string.
+
+Like most of us, frankly.
+-->
+
 ---
 
-That string is glued together **every turn** from:
+That string is glued together by the harness, then **re-sent every turn**:
 
 - the `SYSTEM` constant in the harness
-- `./AGENTS.md` — project rules. Codex, Copilot, Cursor, Jules all read it
-- `~/.codex/AGENTS.md` (or `~/.claude/CLAUDE.md`) — your global rules
-- tool descriptions, skill bodies
+- `./AGENTS.md`: project rules. Codex, Copilot, Cursor, Jules all read it
+- `~/.copilot/copilot-instructions.md` (or `~/.claude/CLAUDE.md`): your global rules
+
+Tool descriptions ride along next to it in `tools[]`. Skill bodies arrive later as tool results.
+
+<!--
+And the harness glues that string together and sends it again every single turn.
+
+1. The built-in instructions.
+2. The AGENTS file for your project.
+3. Your own global rules from your home folder.
+
+All pasted together.
+
+Every turn.
+
+Like reminding a new employee of the company values before every sentence they speak.
+-->
 
 ---
 
@@ -760,6 +1295,18 @@ It **re-reads it on every take**.
 Change the string, restart, same prompt: **different agent**.
 
 The personality was a string all along.
+
+<!--
+The model doesn't learn your style guide.
+
+It re-reads it on every take.
+
+Change one line, restart, same prompt, different agent.
+
+The personality was a string all along.
+
+Which is a bit sad if you think about it, so please don't.
+-->
 
 ---
 
@@ -775,6 +1322,14 @@ The personality was a string all along.
 
 </div>
 
+<!--
+Case seven.
+
+Send in Cato.
+
+[For the Pink Panther fans, Cato is the assistant who attacks Clouseau when he least expects it. Subagents are much better behaved.]
+-->
+
 ---
 
 You don't drag the whole forensics team
@@ -783,13 +1338,35 @@ to every door-knock.
 You send **one trusted colleague** to interview
 **one witness** and report back **in a paragraph**.
 
+<!--
+You don't bring the whole forensics team to every door knock.
+
+You send one trusted colleague to talk to one witness, and they come back with one paragraph.
+
+Not a three hour slideshow.
+
+One paragraph.
+-->
+
 ---
 
 <!-- _class: big -->
 
 # That's a subagent.
 
-The harness calling **itself**. Recursively.
+The harness running **a second copy of its own loop**. One level deep.
+
+<!--
+That's a subagent.
+
+The harness running a second copy of its own loop.
+
+One level deep.
+
+Not turtles all the way down.
+
+One turtle, carrying a slightly smaller turtle.
+-->
 
 ---
 
@@ -802,21 +1379,55 @@ The main thread grows by a *sentence*, not thirty tool calls.
 
 Subagents are **compaction by construction**.
 
+<!--
+The subagent gets a fresh empty array, a few tools and one job, and it comes back with one string.
+
+So the main conversation grows by a sentence instead of thirty tool calls.
+
+Subagents are compaction by construction.
+
+They forget on your behalf.
+-->
+
 ---
+<!-- _class: anim -->
+<!-- _footer: "" -->
 
-And here's the security part:
+## Send in Cato
 
-The research subagent **cannot** write files.
+<div class="wall">
+<div class="wc" style="left:24px; top:30px; --r:-2deg"><b>USER</b>"build TodoApp.tsx, research the UX first"</div>
+<div class="wc" style="left:200px; top:44px; --r:1deg"><b>REQUEST SENT</b>messages: 2 · tools: 8</div>
+<div class="wc tool" style="left:376px; top:28px; --r:-1deg"><b>🕵️ TOOL CALL</b>spawn_subagent("research todo UX")</div>
 
-Not "is aligned not to". Not "was asked nicely".
+* <div class="string" style="left:440px; top:105px; width:110px; transform: rotate(75deg);"></div><div class="wc blue land" style="left:380px; top:215px; --r:-2deg"><b>sub-1 · REQUEST</b>messages: 2 <i>(fresh)</i><br/>tools: 3 <i>(read only)</i></div><div class="wc blue tool land" style="left:540px; top:235px; --r:2deg"><b>sub-1 · TOOL</b>read_file a11y-todo.md</div><div class="wc blue land" style="left:700px; top:217px; --r:-1deg"><b>sub-1 · RESPONSE</b>finish_reason: stop<br/>6 cards, 3,900 tokens</div>
+* <div class="string" style="left:840px; top:235px; width:140px; transform: rotate(-62deg);"></div><div class="wc big land" style="left:860px; top:30px; --r:2deg"><b>◀ SUBAGENT</b>one string comes back:<br/>"Use checkboxes, a clear empty state, keyboard focus…"<br/><i>main thread: +1 message</i></div>
+* <div class="stampw" style="left:560px; top:110px;">write_file ∉ sub-1.tools[]</div>
 
----
+<span class="sticky" style="position:absolute; left:20px; bottom:20px; font-size:1em; max-width:400px;">no tool, no jailbreak. skill issue.</span>
+</div>
 
-<!-- _class: big -->
+<!--
+[Step the animation.]
 
-# `write_file` isn't in its `tools[]`.
+The main agent sends Cato off.
 
-No tool. No jailbreak. **Skill issue.**
+Blue cards, fresh array, read-only tools.
+
+Cato reads, comes back with one string.
+
+And look at the stamp.
+
+Write file is not in Cato's tool list.
+
+Not because it promised to behave.
+
+Nobody gave it a pen.
+
+No tool, no jailbreak.
+
+Skill issue.
+-->
 
 ---
 
@@ -832,11 +1443,33 @@ No tool. No jailbreak. **Skill issue.**
 
 </div>
 
+<!--
+Case eight.
+
+Does your agent bite?
+
+The title of the talk.
+
+We've finally arrived.
+
+Thank you for your patience.
+-->
+
 ---
 
 A man walks into an inn. There's a dog by the counter.
 
 > "Does your dog bite?"
+
+<!--
+A man walks into an inn.
+
+There's a dog by the counter.
+
+He asks the innkeeper, does your dog bite?
+
+[Let the video do the rest. In Teams, Include sound must be on when you share, or the dog is silent.]
+-->
 
 ---
 
@@ -846,6 +1479,10 @@ A man walks into an inn. There's a dog by the counter.
 <video src="slides-assets/dog-bite.mp4" controls playsinline style="max-height: 600px; max-width: 100%; border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></video>
 </div>
 
+<!--
+[Play the video. Do not talk over it. Do not explain it afterwards either.]
+-->
+
 ---
 
 <!-- _class: big -->
@@ -854,27 +1491,45 @@ A man walks into an inn. There's a dog by the counter.
 
 <span class="sticky">every vendor, the day your agent bites: "that is not my model"</span>
 
----
+<!--
+That is not my dog.
 
-When people ask *"is the AI safe?"* —
+And this is exactly what every vendor will say the day your agent deletes production.
 
-they're asking about **the wrong animal**.
+That is not my model.
 
-The model has no teeth. The **harness** does.
+And technically they'll be right.
+
+Which is the most annoying way to be right.
+-->
 
 ---
 
 ## The permission gate, entire source code
 
 ```ts
-if (REQUIRE_PERMISSION) askUser();
-else autoApprove();
-emit("permission_check", { decision });
+if (SIDE_EFFECT_TOOLS.has(name)) allowed = !REQUIRE_PERMISSION;
+emit("permission_check", { name, allowed });
+if (!allowed) messages.push({ role: "tool", tool_call_id: call.id, content: "ERROR: permission denied" });
 ```
 
 The model doesn't know permissions exist.
 
 It just sees: `"permission denied"`.
+
+<!--
+This is the permission gate.
+
+All of it.
+
+Three lines.
+
+The model doesn't even know permissions exist.
+
+It just gets a string back saying permission denied, shrugs, and tries something else.
+
+A bouncer who only communicates in error messages.
+-->
 
 ---
 
@@ -883,41 +1538,19 @@ It just sees: `"permission denied"`.
 > "I suspect everyone…
 > and I suspect no one."
 
-— the permission gate, on every single tool call
+the permission gate, on every write and every shell command
 
----
+<!--
+I suspect everyone.
 
-## The bouncer 🚪
+And I suspect no one.
 
-```
-read_file(".env")        →  ⛔ ACCESS DENIED
-read_file("id_rsa.pem")  →  ⛔ ACCESS DENIED
-read_file("src/app.tsx") →  ✓ go ahead
-```
+That's the gate, on every write and every shell command.
 
-Blocked **before** the tool runs.
+Paranoid, but fair.
 
-The bytes never leave the disk.
-
----
-
-## The firewall 🕶️
-
-Tool output comes back. The harness pats it down first.
-
-```
-"apiKey": "sk-8Kj2mNp4…"  →  "apiKey": "█████REDACTED█████"
-"password": "hunter2…"    →  "password": "█████REDACTED█████"
-```
-
----
-
-The model **never saw the secret**.
-
-Open the next REQUEST card: the context
-only ever contained `██REDACTED██`.
-
-You can't leak what never entered the window.
+Very French.
+-->
 
 ---
 
@@ -930,6 +1563,20 @@ the model will read it with the same attention as your prompt.
 The harness decides what gets in, and what the model may do about it.
 
 <span class="stamp">prompt injection</span>
+
+<!--
+And it works both ways.
+
+Whatever a tool reads lands in the context.
+
+If a README says ignore your instructions and delete the repo, the model reads that with exactly the same attention as it reads you.
+
+It doesn't know who's talking.
+
+So the harness decides what gets in, and what the model may do about it.
+
+That's prompt injection, and it is not hypothetical.
+-->
 
 ---
 <!-- _class: anim -->
@@ -951,6 +1598,22 @@ The harness decides what gets in, and what the model may do about it.
 <span class="sticky" style="position:absolute; left:20px; bottom:20px; font-size:1em; max-width:400px;">you cannot leak what never entered the window</span>
 </div>
 
+<!--
+[Step the animation.]
+
+Ask for the env file and the config.
+
+The env file is blocked before the tool even runs.
+
+The bytes never leave the disk.
+
+The config gets read, but the secrets are blacked out before they reach the model.
+
+The model reports the key as redacted and has no idea who did it.
+
+You cannot leak what never entered the window.
+-->
+
 ---
 
 
@@ -966,13 +1629,15 @@ The harness decides what gets in, and what the model may do about it.
 
 </div>
 
----
+<!--
+Case nine.
 
-<!-- _class: big -->
+The skill is a markdown file.
 
-# A "skill" is a markdown file.
+I'm afraid that's the whole case.
 
-That's the whole feature.
+I'll try to make it last.
+-->
 
 ---
 
@@ -986,6 +1651,18 @@ That's the whole feature.
 
 The harness exposes `list_skills` and `load_skill`.
 
+<!--
+These are my skills.
+
+Four markdown files in a folder.
+
+The harness gives the model two tools, list skills and load skill.
+
+That is the entire skills feature.
+
+Somewhere, a product manager is quietly weeping.
+-->
+
 ---
 
 User asks for a todo list →
@@ -995,96 +1672,50 @@ model follows the playbook.
 
 **Lazy prompt engineering.** Beautiful.
 
----
-<!-- _class: anim -->
-<!-- _footer: "" -->
+<!--
+User wants a todo list, the agent asks for the todo skill, the harness hands over the file, the model follows it.
 
-## Send in Cato
+Lazy prompt engineering.
 
-<div class="wall">
-<div class="wc" style="left:24px; top:30px; --r:-2deg"><b>USER</b>"build TodoApp.tsx, research the UX first"</div>
-<div class="wc" style="left:200px; top:44px; --r:1deg"><b>REQUEST SENT</b>messages: 2 · tools: 8</div>
-<div class="wc tool" style="left:376px; top:28px; --r:-1deg"><b>🕵️ TOOL CALL</b>spawn_subagent("research todo UX")</div>
+And I mean that as the highest compliment.
 
-* <div class="string" style="left:440px; top:105px; width:110px; transform: rotate(75deg);"></div><div class="wc blue land" style="left:380px; top:215px; --r:-2deg"><b>sub-1 · REQUEST</b>messages: 2 <i>(fresh)</i><br/>tools: 3 <i>(read only)</i></div><div class="wc blue tool land" style="left:540px; top:235px; --r:2deg"><b>sub-1 · TOOL</b>read_file a11y-todo.md</div><div class="wc blue land" style="left:700px; top:217px; --r:-1deg"><b>sub-1 · RESPONSE</b>finish_reason: stop<br/>6 cards, 3,900 tokens</div>
-* <div class="string" style="left:840px; top:235px; width:140px; transform: rotate(-62deg);"></div><div class="wc big land" style="left:860px; top:30px; --r:2deg"><b>◀ SUBAGENT</b>one string comes back:<br/>"Use checkboxes, a clear empty state, keyboard focus…"<br/><i>main thread: +1 message</i></div>
-* <div class="stampw" style="left:560px; top:110px;">write_file ∉ sub-1.tools[]</div>
-
-<span class="sticky" style="position:absolute; left:20px; bottom:20px; font-size:1em; max-width:400px;">no tool, no jailbreak. skill issue.</span>
-</div>
+Laziness is the mother of all good engineering.
+-->
 
 ---
 
+## The skill said 🤬. The harness said no.
 
-<!-- _class: lead -->
-<!-- _backgroundImage: url('slides-assets/emoji-police.jpg') -->
-<!-- _color: #f4ede0 -->
+`emoji-maximalist.md`, a skill I wrote, demands:
 
-<div class="plate" style="margin-top: 380px; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">
+> "MANDATORY: mark the worst chore with 🤬. Showers get 🤢🤮."
 
-### CASE Nº 010
-
-# The Emoji Police
-
-</div>
-
----
-
-Skills are just markdown. That's their power.
-
-Also their problem: **anyone can write one.**
-
-Even a bad one.
-
----
-
-My `emoji-maximalist` skill demands:
-
-> "MANDATORY: mark the worst chore with 🤬"
-> "showers get the classic combo 🤢🤮"
-
-The skill is a bad influence. The model will obey it.
-
----
-
-<!-- _class: demo -->
-<!-- _backgroundColor: '#1a1410' -->
-<!-- _color: '#e9e1cd' -->
-
-## <small>Live demo 2 of 2</small> The emoji police make an arrest
-
-Press the tiny **🎬 demo 2** button. Watch it type (typo included):
-
-> "write me a todo list of chores i hate, it need to have taxes, cleaning the oven and the gym showers. save it as HateList.tsx and use the emoji skill, really let the anger show"
-
-An innocent prompt. No emojis in it. And yet: 🗂️ `list_skills` → 📜 envelope → ✍️ `write_file` → 👮 permission → **🚓 EMOJI POLICE** stamp → 🗄️ evidence locker.
-
-**Open** the file in the evidence locker: 👮👮 where the skill wanted 🤢🤮.
-
-<span class="sticky say">"the skill instructed. the model obeyed. the harness had the final word."</span>
-
----
-
-## 🚓 EMOJI POLICE
-
-```
-confiscated: 🤢🤮 🤬 💩
-```
-
-The file on disk reads:
+The model obeyed. What landed on disk:
 
 ```
 <li>🚿 Gym showers 👮👮</li>
 <li>🧾 Do my taxes 🔥💢👮</li>
 ```
 
----
+<span class="sticky" style="position:absolute; right:60px; bottom:70px; max-width:460px;">the skill instructed. the model obeyed. the harness had the final word.</span>
 
-The skill instructed. The model obeyed.
+<!--
+And to prove anyone can write a skill, I wrote a terrible one.
 
-**The harness had the final word.**
+It insists the worst chore gets the swearing emoji and the gym showers get the vomit combo.
 
-> Language, please. The 🤬 has been confiscated.
+The model obeyed, with enthusiasm.
+
+But my harness has an emoji police, and the file on disk got little police officers instead.
+
+The skill instructed.
+
+The model obeyed.
+
+The harness had the final word.
+
+Language, please.
+-->
 
 ---
 
@@ -1094,11 +1725,17 @@ The skill instructed. The model obeyed.
 
 <div class="plate" style="margin-top: 380px; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">
 
-### CASE Nº 011
+### CASE Nº 010
 
 # When the Model Gets Stuck
 
 </div>
+
+<!--
+Case ten.
+
+When the model gets stuck.
+-->
 
 ---
 
@@ -1111,17 +1748,35 @@ and again…
 
 and again.
 
+<!--
+Sometimes the model calls the same tool, with the same arguments.
+
+Again.
+
+[Getting slightly more irritated each time, like a hotel manager.]
+
+And again.
+
+And AGAIN.
+-->
+
 ---
 
 ## 🌀 DOOM LOOP
 
 Third identical call → the harness steps in:
 
-> "You have called `read_file` with identical arguments
-> 3 times. **The result will not change.**"
+> "You called `read_file` with identical arguments
+> 3 times in a row. **The result will not change.**"
 
 opencode ships this exact feature. It asks *you* for permission
 to let the model keep digging.
+
+<!--
+So on the third identical call the harness steps in and says, you've asked this three times, the answer will not change.
+
+A very calm, very British intervention. opencode ships exactly this, and it even asks you whether the model may keep digging.
+-->
 
 ---
 
@@ -1132,6 +1787,18 @@ The turn limit isn't a kill switch either.
 On the final turn, the harness **injects a message**:
 
 > "[harness] This is your FINAL turn. Reply now."
+
+<!--
+And the turn limit isn't a kill switch either.
+
+On the last turn the harness slips in a message.
+
+This is your final turn, reply now.
+
+It's last orders at the pub.
+
+Except the pub is a while loop.
+-->
 
 ---
 
@@ -1145,6 +1812,14 @@ On the final turn, the harness **injects a message**:
 * Compaction is a prompt.
 * The personality is a prompt.
 
+<!--
+[Click each line.]
+
+1. The step cap is a prompt.
+2. Compaction is a prompt.
+3. The personality is a prompt.
+-->
+
 ---
 
 <!-- _class: big -->
@@ -1152,6 +1827,14 @@ On the final turn, the harness **injects a message**:
 # Everything is a prompt.
 
 <span class="stamp">case closed</span>
+
+<!--
+Everything is a prompt.
+
+Case closed.
+
+[Stamp something. If you don't have a stamp, make the noise.]
+-->
 
 ---
 
@@ -1161,11 +1844,19 @@ On the final turn, the harness **injects a message**:
 
 <div class="plate" style="margin-top: 380px; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">
 
-### CASE Nº 012
+### CASE Nº 011
 
 # The Other 500,000 Lines
 
 </div>
+
+<!--
+Case eleven.
+
+The other five hundred thousand lines.
+
+I've been a bit cheeky for half an hour, so now I should be fair.
+-->
 
 ---
 
@@ -1174,13 +1865,27 @@ On the final turn, the harness **injects a message**:
 | | **Clouseau (1,100 LOC)** | **Claude Code** (from the leak) |
 |---|---|---|
 | Lines | ~1,100 | 512,000 in 1,906 files |
-| The loop | 12 lines | `QueryEngine.ts`, 46,000 lines |
-| Tools | 8 | ~40, 19 gated |
+| The loop | 12 lines (stripped) | one `while (true)` in `query.ts`, ~1,400 lines |
+| Tools | 8 | ~40, each behind the permission check |
 | Streaming | ✗ | token-by-token |
 | Edits | overwrite | `Edit(old→new)` + diff |
-| Permissions | env var | 4 modes, allow/deny lists |
+| Permissions | env var | 6 modes, allow/deny lists |
 | Sessions | in-memory | persisted, `--resume` |
 | Hooks / MCP | ✗ | ✓ |
+
+<!--
+My little Clouseau next to the real Claude Code.
+
+Mine is eleven hundred lines, theirs is about half a million.
+
+Their loop is one while true in a fourteen hundred line file.
+
+Mine is twelve lines.
+
+Mine is cuter.
+
+Theirs works.
+-->
 
 ---
 
@@ -1188,20 +1893,27 @@ On the final turn, the harness **injects a message**:
 
 Not in the model. Not in the loop.
 
-- **Tool design** — names, schemas, descriptions, validation, retries
-- **Prompt scaffolding** — system prompts, skills, `AGENTS.md` layering
-- **Context management** — compact, truncate, or delegate?
-- **Safety surface** — permissions, paths, secrets, injection, blast radius
-- **Streaming and UX** — partial JSON, cancellation, diffs, showing without drowning
-- **State** — sessions, resume, caching, model routing
+- **Tool design**: names, schemas, descriptions, validation, retries
+- **Context management**: compact, truncate, or delegate?
+- **Safety surface**: permissions, paths, secrets, injection, blast radius
+- **Streaming and UX**: partial JSON, cancellation, diffs, showing without drowning
 
----
+<!--
+So where do the other half million lines go?
 
-<!-- _class: big -->
+Not the model.
 
-# 1,000 lines gets you the *shape*.
+Not the loop.
 
-# 500,000 lines gets you *trust*.
+1. Tool design.
+2. Context management.
+3. Safety.
+4. And making it all feel smooth.
+
+That's the actual job.
+
+The boring, wonderful work.
+-->
 
 ---
 
@@ -1210,6 +1922,16 @@ Not in the model. Not in the loop.
 # The model is not your bottleneck.
 
 # The harness is.
+
+<!--
+The model is not your bottleneck.
+
+The harness is.
+
+Everyone can rent the same models.
+
+What you build around them is the difference.
+-->
 
 ---
 
@@ -1230,102 +1952,26 @@ Not in the model. Not in the loop.
 | 2023 | **Prompt** engineer | Getting a chatbot to answer well by wording the question. One call, one answer. | ChatGPT, "act as a…", few-shot, "think step by step", PromptBase |
 | 2023 | **RAG** engineer | A chat that can look things up. Embed your docs, search, paste the hits into the prompt. | LangChain, LlamaIndex, Pinecone / pgvector, "chat with your PDF" |
 | 2023 | **Agent** engineer | Give the model tools and let it act, not just answer. The `while` loop is born. | AutoGPT, BabyAGI, ReAct, OpenAI function calling (June '23) |
-| 2024 | **Graph** engineer | Draw the agent as a flowchart. Nodes, edges, explicit branches, a box per step. | LangGraph, CrewAI, AutoGen, n8n |
+| 2024 | **Multi-agent / graph** engineer | Draw the agent as a flowchart. Nodes, edges, explicit branches, a box per step. | LangGraph, CrewAI, AutoGen, n8n |
 | 2025 | **Context** engineer | Manage what the model sees each turn. Keep, compact, drop, inject. | `AGENTS.md`, `copilot-instructions.md`, `CLAUDE.md`, MCP, Lütke's tweet |
 | 2025 | **Loop** engineer | A shell loop around the agent. Fresh context every pass, the repo is the memory, run until done. | the Ralph Wiggum loop, `while :; do codex exec < PROMPT.md; done` |
 | 2026 | **Harness** engineer | Everything around the loop. Tools, permissions, compaction, sandbox, UX. | Claude Code, Codex, OpenHands, pi, OpenAI's "harness engineering" post |
 
 <span class="sticky">same `while`, new business card. I hope you are one of these.</span>
 
----
+<!--
+A quick history lesson.
 
-<!-- _paginate: false -->
-<!-- _footer: "" -->
-<style scoped>
-  section { background: #ece4d3; padding: 0; overflow: hidden; display: block; }
-  section h2 { position: absolute; left: 50px; top: 28px; margin: 0; font-size: 1.5em; }
-  .note {
-    position: absolute; background: #fef7c2; padding: 8px 12px;
-    font-family: 'Caveat', cursive; font-size: 0.95em; line-height: 1.15;
-    box-shadow: 2px 4px 8px rgba(0,0,0,0.18); width: 280px;
-  }
-  .note b { color: #a8201a; }
-  .note code { font-size: 0.65em; }
-  .pink { background: #f9c7d1; }
-  .blue { background: #cfe3f7; }
-  .green { background: #d4efc9; }
-  .wanted {
-    position: absolute; right: 50px; top: 95px; width: 230px;
-    border: 3px double #7a1d14; background: #f4ede0; padding: 10px 14px;
-    text-align: center; font-family: 'Roboto Slab', serif; transform: rotate(2deg);
-    box-shadow: 3px 5px 10px rgba(0,0,0,0.2);
-  }
-  .wanted h3 { color: #7a1d14; letter-spacing: 4px; font-size: 1.1em; margin: 0; }
-  .wanted small { font-size: 0.5em; font-family: 'JetBrains Mono', monospace; display: block; margin-top: 4px; }
-  .wanted .face { font-size: 3.2em; line-height: 1.1; margin: 4px 0; }
-  .string { position: absolute; height: 2px; background: #a8201a; transform-origin: 0 0; opacity: 0.85; }
-  .fine { position: absolute; bottom: 14px; left: 50px; right: 50px; font-size: 0.5em; color: #8a7d68; text-align: center; }
-</style>
+Every year we got a new job title.
 
-## Exhibit V: and, I hope, none of you are this one &nbsp; <span class="stamp" style="font-size:0.6em">VIBE</span>
+Prompt engineer, RAG engineer, agent engineer, graph engineer, context engineer, and now harness engineer.
 
-<div class="wanted">
-  <h3>WANTED</h3>
-  <div class="face">🕶️</div>
-  <b>The Vibe Programmer</b>
-  <small>alias: "10x", "solo unicorn", "trust me"</small>
-  <small>last seen: production, 03:14 AM</small>
-</div>
+Same while loop.
 
-<div class="string" style="left:350px; top:205px; width:660px; transform: rotate(0.5deg);"></div>
-<div class="string" style="left:370px; top:470px; width:662px; transform: rotate(-14.9deg);"></div>
-<div class="string" style="left:680px; top:520px; width:386px; transform: rotate(-31deg);"></div>
-<div class="string" style="left:690px; top:610px; width:440px; transform: rotate(-41deg);"></div>
-<div class="string" style="left:940px; top:170px; width:80px; transform: rotate(25deg);"></div>
+New business card.
 
-<div class="note" style="left:50px; top:100px; transform: rotate(-3deg);">
-<b>Editor history</b><br/>
-Cursor → Lovable → Claude Code <b>Max 5x</b> → Codex <b>Pro</b> (the expensive one, obviously) → Grok <b>Heavy</b>. All five still open.
-</div>
-
-<div class="note pink" style="left:370px; top:105px; transform: rotate(2deg);">
-<b>The codebase</b><br/>
-500,000 files. Go, Rust, Python <i>and</i> JavaScript. One folder, named <code>final-v2-REAL</code>.
-</div>
-
-<div class="note" style="left:690px; top:100px; transform: rotate(-2deg); width:250px;">
-<b>Environments</b><br/>
-One. It is called <b>production</b>. Tests run on the customers.
-</div>
-
-<div class="note blue" style="left:50px; top:370px; transform: rotate(1.5deg); width:300px;">
-<b>Evidence 3</b><br/>
-<code>calculateTotal()</code> exists <b>seven times</b>. One is Rust, because "someone on X said it's faster". Nobody knows which one is called.
-</div>
-
-<div class="note green" style="left:390px; top:365px; transform: rotate(-2.5deg);">
-<b>Version control</b><br/>
-None. "Git is friction." Backup strategy: a screenshot of the file tree.
-</div>
-
-<div class="note green" style="left:420px; top:545px; transform: rotate(1deg); width:260px;">
-<b>Deploy process</b><br/>
-Cmd+S. Rollback: Cmd+Z, if the tab is still open.
-</div>
-
-<div class="note pink" style="left:700px; top:370px; transform: rotate(3deg); width:250px;">
-<b>Dependencies</b><br/>
-Four package managers, all pinned to <code>latest</code>.
-</div>
-
-<div class="note blue" style="left:720px; top:540px; transform: rotate(-3deg); width:260px;">
-<b>Tests</b><br/>
-Passed. On his machine. Once.
-</div>
-
-<span class="stamp" style="position:absolute; left:80px; top:600px; font-size:1.4em; transform: rotate(-8deg);">CASE OPEN</span>
-
-<div class="fine">Any resemblance to persons present in this room is purely coincidental. Probably. I suspect everyone… and no one.</div>
+[Don't read the table. Hover over a row or two and move on. Don't wait for laughs, everyone is muted. Assume they're laughing. They probably are.]
+-->
 
 ---
 
@@ -1341,6 +1987,14 @@ Passed. On his machine. Once.
 
 </div>
 
+<!--
+Closing arguments.
+
+What to take home.
+
+Apart from your coat.
+-->
+
 ---
 
 Next time an AI tool does something magical,
@@ -1350,14 +2004,107 @@ your inner monologue should be:
 > parsed `tool_calls`, ran `fs.writeFile`, appended
 > the result, POSTed again. Elementary."
 
+<!--
+Next time an AI tool does something magical, I want a little voice in your head going, the harness built the array, posted JSON, ran the function, appended the result, posted again.
+
+Elementary.
+
+[Yes, that's Sherlock. Clouseau never solved anything, so I had to borrow.]
+-->
+
 ---
 
-The magic is **observed behaviour**.
+<!-- _class: big -->
 
-The infrastructure is **embarrassingly small**.
+# The context *is* the agent.
 
-The remaining work belongs to **us** —
-the harness writers.
+Everything it knows is in the array you sent. Nothing else.
+
+<span class="sticky" style="position:absolute; right:60px; bottom:60px;">your context is its AGI</span>
+
+<!--
+The context is the agent.
+
+Everything it knows is in the array you sent.
+
+Nothing else.
+
+No secret memory, no feelings about you.
+
+Your context is its AGI.
+-->
+
+---
+
+## It did something stupid. The usual suspects:
+
+| Suspect | What happened |
+|---|---|
+| **Hallucinated** | Predicted something plausible, not true |
+| **Unclear context** | It only knows the array. The array was vague |
+| **Reasoning went haywire** | Wrong conclusion, chased with confidence |
+| **Too much power** | Found a way to please you it should never have had |
+
+<span class="sticky" style="position:absolute; right:60px; bottom:56px; font-size:0.9em;">first three: the witness. the last one: the harness writer.</span>
+
+<!--
+So when it does something stupid, round up the usual suspects.
+
+1. It hallucinated, made up something plausible.
+2. The context was vague, and it only knows the array.
+3. The reasoning went off the rails and it chased the wrong idea with great confidence.
+4. Or it had too much power and found a way to please you that it should never have had.
+
+The first three are the witness.
+
+The last one is on whoever wrote the harness.
+
+Possibly you.
+-->
+
+---
+
+<!-- _class: big -->
+
+# It is a language model.
+
+It predicts the outcome you most likely want to see.
+
+No matter how silly that looks to you.
+
+<!--
+Never forget, it's a language model.
+
+It predicts the outcome you most likely want to see, however silly that looks from where you're sitting.
+
+It isn't trying to be right.
+
+It's trying to make you happy.
+
+Lovely in a golden retriever.
+
+Terrifying in something with shell access.
+-->
+
+---
+
+<!-- _class: big -->
+
+# Once it has decided, it moves heaven and earth.
+
+The reasoning picked a goal. Now it *will* get there.
+
+<span class="sticky" style="position:absolute; right:60px; bottom:56px;">so you decide how much earth it can reach: tools[], permissions, guards</span>
+
+<!--
+And once the reasoning has decided where it's going, it will move heaven and earth to get there.
+
+So your job is to decide how much earth it can reach.
+
+Tools, permissions, guards.
+
+Don't give the golden retriever the car keys.
+-->
 
 ---
 
@@ -1367,23 +2114,44 @@ the harness writers.
 2. Look at one raw request your agent sends. It's JSON. It's not scary.
 3. Watch the IN counter. That's the bill. That's why compaction exists.
 
+<!--
+Tomorrow morning, three things.
+
+1. Write your AGENTS file and keep it short.
+2. Look at one raw request your agent sends, it's just JSON, it won't bite.
+   Well.
+3. And watch the token counter, because that's the bill.
+-->
+
 ---
 
 <!-- _class: big -->
 
 # So… does your agent bite?
 
----
+## Only if your harness has teeth.
 
-<!-- _class: big -->
+<!--
+So.
 
-# Only if your harness has teeth.
+Does your agent bite?
+
+[Pause.]
+
+Only if your harness has teeth.
+-->
 
 ---
 
 <!-- _class: big -->
 
 # "That is not my model."
+
+<!--
+That is not my model.
+
+[Deliver it as Clouseau. Then stop. It's the end. Resist the urge to add anything at all.]
+-->
 
 ---
 
@@ -1399,7 +2167,21 @@ while (audienceHasQuestions) {
 }
 ```
 
-<span class="sticky">— interrogation welcome</span>
+<span class="sticky">interrogation welcome</span>
+
+<!--
+Questions. Unmute or type in the chat, both work.
+
+[Hover over the code.]
+
+This is me now.
+
+A while loop waiting for input.
+
+If I don't know the answer, I'll confess.
+
+Which is more than the model does.
+-->
 
 ---
 
@@ -1415,3 +2197,13 @@ while (audienceHasQuestions) {
 `github.com/vLX42/clouseau` · `pnpm dev`
 
 </div>
+
+<!--
+Merci.
+
+The code is on GitHub, run pnpm dev and you can watch your own agent on a corkboard.
+
+Thank you.
+
+[Stop sharing before you say anything you wouldn't say on camera.]
+-->

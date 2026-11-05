@@ -1,6 +1,6 @@
 # Demo runbook
 
-One live demo on the Clouseau wall, four reconstructions that are animated
+Two live demos on the Clouseau wall, four reconstructions that are animated
 inside the slides (arrow key steps them, like fragments), and an appendix of
 extra live prompts if the room wants more.
 
@@ -101,6 +101,31 @@ after the write. No harm; you lose one turn. If it refuses or rambles, press
 
 **Time:** 2 to 3 minutes. This is the one demo that must land.
 
+## Live demo 2 · A skill is just a string
+
+**Slide:** "Live demo · A skill is just a string" (end of Case 009, right after
+"What the model actually gets"). Skip it if you are running behind.
+
+**Setup:** press **new session** first. Type the prompt by hand, the 🎬 demo 2
+button still types the emoji prompt (that one is an Easter egg now).
+
+> Load the a11y-todo skill, then write a short checklist for a todo list page to CHECKLIST.md following it.
+
+Verified 5 Nov 2026 through the real UI, five clean turns: `list_skills`,
+`load_skill`, `write_file`, `file_exists`, then the answer.
+
+**Focus on three things:**
+
+1. Loading it is just a tool call: 📜 `load_skill(a11y-todo) · 1803b`.
+2. Click the REQUEST SENT after it: the skill is one string in a `tool` message.
+3. Point at IN: it jumps by a few hundred tokens, and that text goes again on
+   every later turn.
+
+**If it fails:** click **📼 offline** and play the full case recording, which
+also loads a skill.
+
+**Time:** about 2 minutes.
+
 ## Animated reconstructions (inside the slides)
 
 Each of these is a mini crazy-wall drawn in the slide. Press → to land the
@@ -149,8 +174,8 @@ menu. No jailbreak."*
 
 ## Optional · The emoji police, live
 
-Not in the main talk any more: it is one static slide at the end of Case 009 (skill
-demand + file on disk). Run this only if there is time or the room asks.
+Not in the main talk or the slides any more. Run this only if there is time or
+someone asks.
 
 This one also carries the skill envelope, the `write_file` permission stamp
 and the evidence locker, so everything the animated walls showed lands once
@@ -220,8 +245,9 @@ All of these work on the wall with the default `.env` unless noted.
 |---|---|
 | Animated A (terminal) | 1 |
 | Live demo 1 (tool call) | 3 |
+| Live demo 2 (skill) | 2 |
 | Animated B, C, D | 1.5 each |
-| **Total** | **~8.5** |
+| **Total** | **~10.5** |
 
-That leaves about 25 minutes for the slides. If you are running long, skip
+That leaves about 23 minutes for the slides. If you are running long, skip
 the hype-titles table. Animated C and D now carry the permission and subagent points on their own, so keep them.

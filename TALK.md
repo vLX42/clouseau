@@ -36,7 +36,7 @@ asks.
 1. **The model is a stateless text-prediction endpoint.** It has no
    filesystem, no memory between turns, no agency. It receives JSON, it
    returns JSON.
-2. **The harness is the program you write.** Claude Code, Cursor, Codex,
+2. **The harness is the program you write.** Claude Code, Cursor, Copilot,
    opencode, your custom thing — they're all harnesses. The agentic behaviour
    is in the harness, not the model.
 3. **A tool call is a structured request from the model to your harness:
@@ -64,7 +64,7 @@ If they internalise these three, the rest is mechanics.
 | **Permission gate** | The harness checking, before executing a side-effect tool, whether the user has approved. |
 | **Skill** | A markdown file with focused instructions that the harness loads and shoves into context when relevant. |
 | **System prompt** | The first message in the messages array, role `"system"`. The model treats it as standing orders. Re-sent every turn. |
-| **Project instructions** | A file like `AGENTS.md` (Codex, Copilot, Cursor) or `CLAUDE.md` (Claude Code) the harness reads from disk and appends to the system prompt at session start. |
+| **Project instructions** | A file like `AGENTS.md` (Copilot, Cursor) or `CLAUDE.md` (Claude Code) the harness reads from disk and appends to the system prompt at session start. |
 | **Subagent** | A second harness instance the main agent spawns to do a focused job. Has its own messages array, its own loop, its own budget. Returns one result. |
 
 ---
@@ -137,7 +137,7 @@ window for that turn. It has a token budget. When it gets close, the
 harness panics.
 
 **"But I've seen it think?"**
-Claude Code, Copilot and Codex sometimes show a "Thinking…" block ("the
+Claude Code and Copilot sometimes show a "Thinking…" block ("the
 user said *the toggle*, there are two, probably the header one…").
 That reasoning happens **inside the model**: extra hidden output tokens
 written before the answer, in the same single request. No extra loop.
@@ -324,8 +324,8 @@ the loop:
   happening (e.g. tool-call summaries in the chat pane) without
   drowning them in detail.
 
-Close with: *"If you wanted to build the next Claude Code, the model is
-not your bottleneck. The harness is."*
+Close with: *"Same model. Different agent. Everyone can rent the same
+model. The difference is the harness."*
 
 Then two comic beats before closing arguments:
 
@@ -343,7 +343,7 @@ Then two comic beats before closing arguments:
   Ryan Lopopolo, 11 Feb 2026, pi is Mario Zechner, Nov 2025.
 - **"Exhibit V: and, I hope, none of you are this one."** A WANTED
   poster for The Vibe Programmer on a chaotic evidence board: five
-  editors still open (Cursor → Lovable → Claude Code Max → Codex Pro →
+  editors still open (Cursor → Lovable → Claude Code Max → Copilot Pro →
   Grok Heavy), 500,000 files in four languages, `calculateTotal()` seven
   times (one in Rust "because someone on X said it's faster"), no source
   control, one environment called production, deploy is Cmd+S, tests
@@ -498,7 +498,7 @@ Pick one and stick with it. Mixing metaphors is how you lose the room.
     *curated* context; only one summarised result returns.
 13. *"Where the real engineering is"* (tool design, prompts, context,
     sandboxing, UX, subagent orchestration).
-14. *"The harness is the bottleneck."*
+14. *"Same model. Different agent."*
 
 ---
 

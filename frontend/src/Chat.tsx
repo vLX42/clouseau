@@ -195,6 +195,17 @@ export default function Chat({
               REPLAY
             </span>
           )}
+          {import.meta.env.VITE_DEMO_MODE && (
+            <a
+              href="/slides/"
+              target="_blank"
+              rel="noreferrer"
+              title="the slides from the talk"
+              style={{ marginLeft: 8, fontSize: 9, letterSpacing: 1.2, color: "var(--accent)" }}
+            >
+              📑 slides
+            </a>
+          )}
           {!demoMode && !probing && (
             <a
               href="?demo=1"

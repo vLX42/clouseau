@@ -3,5 +3,6 @@
   "buildCommand": "cd frontend && npm install && npm run build:demo",
   "outputDirectory": "frontend/dist",
   "installCommand": "true",
-  "framework": null
+  "framework": null,
+  "trailingSlash": true
 }

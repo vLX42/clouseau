@@ -132,7 +132,7 @@ Each of these is a mini crazy-wall drawn in the slide. Press → to land the
 next card. Say the line, then press again. They degrade to a static picture in
 the PDF/PPTX export, so only present from `SLIDES.html`.
 
-### A · "What the room sees, every day" (Case 001, replaces the cold open)
+### A · "What you see every day" (Case 001, replaces the cold open)
 
 A fake terminal. Each → types one more line: thinking, edited `App.tsx`,
 created `theme.css`, `npm run build`, ✓ built, "Done". Do not narrate the

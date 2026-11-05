@@ -247,6 +247,12 @@ I can relate to that.
 
 So I'm not the only one who can't keep up.
 
+[If no hands go down]
+
+Okay, I'm surrounded by superhumans.
+
+What was the diff of the last changed file you looked at?
+
 But it does feel alive, doesn't it?
 
 Like there's somebody in there.
@@ -325,14 +331,14 @@ Let's get started, let's look at three exhibits and break down the magic.
 ## The three exhibits
 
 1. The model is a **stateless text-prediction endpoint**. JSON in, JSON out.
-2. The harness is **a program you could write in an afternoon**. I did: Clouseau, ~1,100 lines. The loop fits in 12.
+2. The harness is **a program you could write in an afternoon**. I did: Clouseau, ~1,100 lines. The loop fits on one slide.
 3. Everything that feels like _intelligence_ is the harness choosing **what JSON to send next**.
 
 > Remember these three and you could build your own GitHub Copilot by Wednesday. (We won't. But you could.)
 
 <!--
 1. The model is a stateless text-prediction endpoint. JSON in, JSON out.
-2. The harness is a program you could write in an afternoon. I did for this talk: It's called Clouseau, about 1,100 lines, and the loop fits in 12.
+2. The harness is a program you could write in an afternoon. I did for this talk: It's called Clouseau, about 1,100 lines, and the loop fits on one slide.
 3. Everything that feels like intelligence is the harness choosing what JSON to send next.
 
 Remember these three and you could build your own GitHub Copilot by Wednesday.
@@ -364,7 +370,7 @@ Case number one, the disappearing magic.
 
 <!-- _class: anim -->
 
-## What the room sees, every day
+## What you see every day
 
 <div class="screen">
 
@@ -493,7 +499,7 @@ It's a while loop.
 
 ---
 
-## Exhibit A
+## Exhibit 2
 
 ```ts
 let messages = [systemPrompt, userPrompt];
@@ -513,7 +519,7 @@ while (true) {
 ```
 
 <!--
-Exhibit A.
+Exhibit 2.
 
 [Give them a moment to read it.]
 
@@ -772,7 +778,7 @@ await fs.writeFile(args.path, args.content);
 messages.push({ role: "tool", tool_call_id: call.id, content: "ok" });
 ```
 
-The model **proposes**. The harness **disposes**.
+The model **asks**. The harness **does**.
 
 <!--
 This is what the harness does next.
@@ -1163,7 +1169,7 @@ Case number six, who is giving the orders?
 
 ---
 
-Click any REQUEST SENT card. Scroll to `messages[0]`.
+The first message in every request:
 
 `role: "system"`.
 
@@ -1422,7 +1428,7 @@ It just sees: `"permission denied"`.
 <!--
 This is the permission gate, the entire source code.
 
-Three lines.
+Just a few lines.
 
 The model doesn't know permissions exist.
 
@@ -1510,6 +1516,7 @@ That's not a teaser, that's the whole case.
 
 ```
 .clouseau-skills/
+├── a11y-todo.md
 ├── react-todo.md
 ├── react-form.md
 └── vite-config.md
@@ -1518,32 +1525,13 @@ That's not a teaser, that's the whole case.
 The harness exposes `list_skills` and `load_skill`.
 
 <!--
-Here's the folder, with three markdown files.
+Here's the folder, with four markdown files.
 
 The harness exposes two tools, list skills and load skill.
 
+So a skill is a prompt that only gets loaded when it's needed, which saves you tokens.
+
 That's the whole feature.
--->
-
----
-
-User asks for a todo list →
-agent asks for the todo skill →
-harness returns the bytes →
-model follows the playbook.
-
-**Lazy prompt engineering.** Beautiful.
-
-<!--
-The user asks for a todo list.
-
-The agent asks for the todo skill.
-
-The harness returns the file.
-
-The model follows the playbook.
-
-So it's a prompt that only gets loaded when it's needed, which saves you tokens.
 -->
 
 ---
@@ -1746,12 +1734,34 @@ So let's pull back the curtain and see what they're made of.
 
 # Everything is a prompt.
 
-<span class="stamp">case closed</span>
-
 <!--
 Everything is a prompt.
+-->
 
-Case closed.
+---
+
+<!-- _class: big -->
+
+# Except the teeth.
+
+A prompt **asks**. Code **refuses**.
+
+<!--
+Well, almost everything.
+
+A prompt only asks.
+
+If your AGENTS file says never delete the tests, that's a request.
+
+The model will probably follow it. Probably.
+
+The permission gate is different. So is the blocked env file, and so is write file missing from a subagent.
+
+That's not a request, that's code.
+
+So prompts steer it, and code stops it.
+
+Those are the teeth.
 -->
 
 ---
@@ -1781,7 +1791,7 @@ To be fair, I've been a bit rude about the real tools, so let's look at them.
 |             | **Clouseau (1,100 LOC)** | **Claude Code** (from the leak)                |
 | ----------- | ------------------------ | ---------------------------------------------- |
 | Lines       | ~1,100                   | ~512,000 in ~1,900 files                       |
-| The loop    | 12 lines (stripped)      | one `while (true)` in `query.ts`, ~1,400 lines |
+| The loop    | fits on one slide        | one `while (true)` in `query.ts`, ~1,400 lines |
 | Tools       | 8                        | ~40, each behind the permission check          |
 | Streaming   | ✗                        | token-by-token                                 |
 | Edits       | overwrite                | `Edit(old→new)` + diff                         |
@@ -1794,7 +1804,7 @@ Here's Clouseau versus the real thing.
 
 Mine is about 1,100 lines, and Claude Code from the leak is about 512,000 lines in about 1,900 files.
 
-My loop is 12 lines stripped, and theirs is one while true in a file of about 1,400 lines.
+My loop fits on one slide, and theirs is one while true in a file of about 1,400 lines.
 
 I have 8 tools, and they have about 40.
 
@@ -1803,6 +1813,10 @@ My permissions are an environment variable, and they have 5 modes with allow and
 So mine is smaller.
 
 Theirs works.
+
+The loop is the easy part.
+
+Making it good is the race.
 -->
 
 ---
@@ -1875,14 +1889,16 @@ And it's where the big wins are right now, in the tools around the model.
 
 # Different agent.
 
-Everyone can rent the same model. The difference is **the harness**.
+Better models matter, but everyone can rent them. The difference is **the harness**.
 
 LangChain tested it: 89 coding tasks, same model, only the harness changed.
 
 Score **52.8% → 66.5%**. From just outside the top 30 to the top 5.
 
 <!--
-Everyone can rent the same model.
+Better models matter, of course.
+
+But everyone can rent the same model.
 
 So why does one tool feel smart and another one feel stupid?
 
@@ -2024,22 +2040,6 @@ So you decide how much earth it can reach, with tools, permissions and guards.
 
 ---
 
-## Tomorrow morning
-
-1. Write your `AGENTS.md`. It's a string in `messages[0]`. Keep it short.
-2. Look at one raw request your agent sends. It's JSON. It's not scary.
-3. Watch the IN counter. That's the bill. That's why compaction exists.
-
-<!--
-So what can you do tomorrow morning?
-
-1. Write your AGENTS file. It's a string in the first message, so keep it short.
-2. Look at one raw request your agent sends. It's JSON, it's not scary.
-3. Watch the token counter. That's the bill, and that's why compaction exists.
--->
-
----
-
 <!-- _class: big -->
 
 # You now know what a harness does.
@@ -2047,8 +2047,6 @@ So what can you do tomorrow morning?
 ## Time to update your title?
 
 <!--
-And one last thing for tomorrow.
-
 You now know what a harness does, so maybe it's time to update your title.
 
 So here's a recap of the ones we've been through.
@@ -2206,6 +2204,22 @@ Probably.
 
 ---
 
+## Tomorrow morning
+
+1. Write your `AGENTS.md`. It's a string in `messages[0]`. Keep it short.
+2. Look at one raw request your agent sends. It's JSON. It's not scary.
+3. Watch the IN counter. That's the bill. That's why compaction exists.
+
+<!--
+So what can you do tomorrow morning?
+
+1. Write your AGENTS file. It's a string in the first message, so keep it short.
+2. Look at one raw request your agent sends. It's JSON, it's not scary.
+3. Watch the token counter. That's the bill, and that's why compaction exists.
+-->
+
+---
+
 <!-- _class: big -->
 
 # So… does your agent bite?
@@ -2266,9 +2280,13 @@ while (audienceHasQuestions) {
 }
 ```
 
+`clouseau-demo.vercel.app`
+
 <span class="sticky">interrogation welcome</span>
 
 <!--
+[Leave this slide up during questions, the link is on it.]
+
 Any questions?
 
 This is me now, a while loop waiting for input.
